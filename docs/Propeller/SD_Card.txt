@@ -1,0 +1,1 @@
+There is a library for interfacing SD cards directly onto the Propeller, it's located in sys/sd.h
