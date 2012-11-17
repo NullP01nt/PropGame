@@ -2,3 +2,4 @@ http://learn.parallax.com/node/366 PropGCC
 http://learn.parallax.com/KickStart Programming examples to help with sensors and the like
 http://gadgetgangster.com/tutorials/331 SD card tutorial
 https://sites.google.com/site/propellergcc/documentation/libraries C Libs
+http://propellerpowered.com/shop/
