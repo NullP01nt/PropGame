@@ -1,0 +1,3 @@
+http://www.parallaxsemiconductor.com/an012
+
+To be used with something along the lines of a 23k256
