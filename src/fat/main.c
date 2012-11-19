@@ -26,8 +26,7 @@ int main(int argc, char** argv) {
 	int ptable_size = sizeof(struct ptable_entry_t);
 	unsigned char buf[MAX_PARTITIONS*ptable_size];
 	struct ptable_entry_t* partition[MAX_PARTITIONS];
-	pos=lseek(ddes,PTABLE_OFFSET,SEEK_CUR);
-	printf("Position of pointer is: %d\n",pos);
+	pos = lseek(ddes,PTABLE_OFFSET,SEEK_CUR);
 	if((nr = read(ddes,buf,sizeof(buf)))==-1) {
 		perror("Read");
 		exit(1);
@@ -38,11 +37,12 @@ int main(int argc, char** argv) {
 		exit(1);
 	}
 
+	printf("--- Partition Table ---\n");
 	for(i=0;i<sizeof(buf);i++) {
 		if(i%16==0 && i!=0) printf("\n");
 		printf("%02X ",buf[i]);
 	}
-	printf("\n");
+	printf("\n\n");
 	for(i=0;i<MAX_PARTITIONS;i++) {
 		partition[i] = (struct ptable_entry_t*)&buf[i*ptable_size];
 		printf("--- Partition %d ---\n",i+1);

@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 void print_ptable(struct ptable_entry_t* table) {
-	if(table->sector_count<=0) {
+	if(table->sector_count<=0 || table->system_id==0) {
 		printf("This is not an initialized partition\n");
 	} else {	
 		printf("Bootflag: %s\n",table->bootflag==0x80?"True":"False");
