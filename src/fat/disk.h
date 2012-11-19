@@ -6,11 +6,11 @@
 #define PTABLE_OFFSET 0x1be
 struct ptable_entry_t {
 	unsigned char bootflag;
-	unsigned char start_head;
-	unsigned short start_hw_addr; // 6 bits for sector, remaining 10 bits for cylinder
+	unsigned char hd_start;
+	unsigned short cs_start;
 	unsigned char system_id;
-	unsigned char end_head;
-	unsigned short end_hw_addr; // see start_hw_addr comment
+	unsigned char hd_end;
+	unsigned short cs_end;
 	unsigned int rel_sector;
 	unsigned int sector_count;
 };
