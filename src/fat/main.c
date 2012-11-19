@@ -2,7 +2,6 @@
 //#include <stdlib.h>
 //#include <sys/stat.h>
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -27,8 +26,8 @@ int main(int argc, char** argv) {
 	}
 	printf("ddes is %d\n",ddes);
 	unsigned char buf[4*sizeof(struct ptable_entry_t)];
-	struct ptable_entry_t partition[4];
-	pos=lseek(ddes,0,SEEK_CUR);
+	struct ptable_entry_t *partition[5];
+	pos=lseek(ddes,PTABLE_OFFSET,SEEK_CUR);
 	printf("Position of pointer is: %d\n",pos);
 	if((nr = read(ddes,buf,sizeof(buf)))==-1) {
 		perror("Read");
@@ -44,8 +43,17 @@ int main(int argc, char** argv) {
 		if(i%16==0 && i!=0) printf("\n");
 		printf("%02X ",buf[i]);
 	}
+	printf("\n");
 
-
+	partition[0] = (struct ptable_entry_t*)buf;
+	partition[1] = (struct ptable_entry_t*)buf[16];
+	partition[2] = (struct ptable_entry_t*)buf[32];
+	partition[3] = (struct ptable_entry_t*)buf[48];
+	/*for(i=0; i<4;i++) {
+		partition[i] = (struct ptable_entry_t*)buf[i*sizeof(struct ptable_entry_t)];
+	}
+	*/
+	print_ptable(partition[0]);
 	/*FILE *dp;
 	unsigned char buffer[4*sizeof(struct ptable_entry_t)];
 	struct ptable_entry_t* p1 = (struct ptable_entry_t*)malloc(sizeof(struct ptable_entry_t));
