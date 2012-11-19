@@ -4,6 +4,7 @@
 #define SECTOR_SIZE 512 // Sector size in bytes
 #define MBR_SECTOR 0 // Stating the obvious, I know, but it makes things easier at some point
 #define PTABLE_OFFSET 0x1be
+#define MAX_PARTITIONS 4
 struct ptable_entry_t {
 	unsigned char bootflag;
 	unsigned char hd_start;
