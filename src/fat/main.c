@@ -13,20 +13,19 @@
 #include "fat.h"
 
 int main(int argc, char** argv) {
-	printf("Arg count: %d\n",argc);
 	char* filename = "usb_2GB.img";
 	if(argc>=2) {
 		filename = argv[1];
 	}
 	printf("filename: %s\n",filename);
-	int ddes=-1, pos=-1, ret=0, nr=0, i=0;
+	int ddes=-1, pos=-1, ret=0, nr=0;
 	if((ddes=open(filename, O_RDONLY | O_SYNC))==-1) {
 		perror("Open");
 		exit(1);
 	}
-	printf("ddes is %d\n",ddes);
-	unsigned char buf[4*sizeof(struct ptable_entry_t)];
-	struct ptable_entry_t *partition[5];
+	int ptable_size = sizeof(struct ptable_entry_t);
+	unsigned char buf[4*ptable_size];
+	struct ptable_entry_t* partition[4];
 	pos=lseek(ddes,PTABLE_OFFSET,SEEK_CUR);
 	printf("Position of pointer is: %d\n",pos);
 	if((nr = read(ddes,buf,sizeof(buf)))==-1) {
@@ -39,21 +38,24 @@ int main(int argc, char** argv) {
 		exit(1);
 	}
 
-	for(i=0;i<sizeof(buf);i++) {
+	/*for(i=0;i<sizeof(buf);i++) {
 		if(i%16==0 && i!=0) printf("\n");
 		printf("%02X ",buf[i]);
-	}
+	}*/
 	printf("\n");
-
-	partition[0] = (struct ptable_entry_t*)buf;
+	/*partition[0] = (struct ptable_entry_t*)buf;
 	partition[1] = (struct ptable_entry_t*)buf[16];
 	partition[2] = (struct ptable_entry_t*)buf[32];
-	partition[3] = (struct ptable_entry_t*)buf[48];
-	/*for(i=0; i<4;i++) {
-		partition[i] = (struct ptable_entry_t*)buf[i*sizeof(struct ptable_entry_t)];
-	}
-	*/
+	partition[3] = (struct ptable_entry_t*)buf[48];*/
+	partition[0] = (struct ptable_entry_t*)buf;
+	partition[1] = (struct ptable_entry_t*)&buf[16];
+	partition[2] = (struct ptable_entry_t*)&buf[32];
+	partition[3] = (struct ptable_entry_t*)&buf[48];
+	
 	print_ptable(partition[0]);
+	print_ptable(partition[1]);
+	//print_ptable(partition[2]);
+	//print_ptable(partition[3]);
 	/*FILE *dp;
 	unsigned char buffer[4*sizeof(struct ptable_entry_t)];
 	struct ptable_entry_t* p1 = (struct ptable_entry_t*)malloc(sizeof(struct ptable_entry_t));
