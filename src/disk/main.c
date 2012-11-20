@@ -3,13 +3,14 @@
 #include <unistd.h>
 #include <fcntl.h>
 
+#define USE_FAT32
 #include "disk.h"
 #include "fat.h"
 
 int main(int argc, char** argv) {
 	char* filename = "usb_2GB.img";
 	if(argc>=2) {
-		filename = argv[1];
+		filename=argv[1];
 	}
 	printf("filename: %s\n",filename);
 	int ddes=-1, pos=-1, ret=0, nr=0,i=0;
@@ -18,16 +19,11 @@ int main(int argc, char** argv) {
 		exit(1);
 	}
 	int ptable_size = sizeof(struct ptable_entry_t);
-	unsigned char buf[MAX_PARTITIONS*ptable_size];
-	struct ptable_entry_t* partition[MAX_PARTITIONS];
+	unsigned char buf[ptable_size];
+	struct ptable_entry_t* partition;
 	pos = lseek(ddes,PTABLE_OFFSET,SEEK_CUR);
 	if((nr = read(ddes,buf,sizeof(buf)))==-1) {
 		perror("Read");
-		exit(1);
-	}
-	ret=close(ddes);
-	if(ret==-1) {
-		perror("Close");
 		exit(1);
 	}
 
@@ -37,11 +33,21 @@ int main(int argc, char** argv) {
 		printf("%02X ",buf[i]);
 	}
 	printf("\n\n");
-	for(i=0;i<MAX_PARTITIONS;i++) {
-		partition[i] = (struct ptable_entry_t*)&buf[i*ptable_size];
-		printf("--- Partition %d ---\n",i+1);
-		print_ptable(partition[i]);
-		printf("\n");
+	partition = (struct ptable_entry_t*)buf;
+	print_ptable(partition);
+	pos=lseek(ddes,SECTOR_OFFSET(partition->rel_sector),SEEK_SET);
+	unsigned char fat_header_buf[sizeof(struct ebpb_t)];
+	if((nr = read(ddes,fat_header_buf,sizeof(buf)))==-1) {
+		perror("Read");
+		exit(1);
+	}
+	printf("--- FAT ---\n");
+	struct ebpb_t* ebpb = (struct ebpb_t*)fat_header_buf;
+	dump_ebpb(ebpb);
+	ret=close(ddes);
+	if(ret==-1) {
+		perror("Close");
+		exit(1);
 	}
 	return EXIT_SUCCESS;
 }
