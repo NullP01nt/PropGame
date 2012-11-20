@@ -6,7 +6,7 @@ void dump_ebpb(struct ebpb_t* block) {
 	int i =0;
 	printf("Assembly: ");
 	for(i=0; i<sizeof(block->bpb.assembly);i++) {
-		printf("%02x ",block->bpb.assembly[i]);
+		printf("%02X ",block->bpb.assembly[i]);
 	}
 	printf("\n");
 	printf("OEM ID: %s\n",block->bpb.OEM_identifier);
