@@ -22,4 +22,17 @@ void dump_ebpb(struct ebpb_t* block) {
 	printf("Head count: %d\n",block->bpb.head_count);
 	printf("Hidden sectors: %d\n", block->bpb.hidden_sectors);
 	printf("Large sectors: %d\n", block->bpb.large_sectors);
+	printf("\n");
+	printf("Volume Label: ");
+	for(i=0;i<sizeof(block->volume_label);i++) {
+		if(block->volume_label[i]==0) break;
+		printf("%c",block->volume_label[i]);
+	}
+	printf("\n");
+	printf("Sys ID: ");
+	for(i=0;i<sizeof(block->system_identifier);i++) {
+		if(block->system_identifier[i]==0) break;
+		printf("%c",block->system_identifier[i]);
+	}
+	printf("\n");
 }

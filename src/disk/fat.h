@@ -3,7 +3,7 @@
 
 	struct bpb_t {
 		unsigned char	assembly[3];
-		unsigned char	OEM_identifier[8];
+				char	OEM_identifier[8];
 		unsigned short	bytes_per_sector;
 		unsigned char	sectors_per_cluster;
 		unsigned short	reserved_sectors;
@@ -12,7 +12,7 @@
 		unsigned short	total_sectors;
 		unsigned char	media_descriptor;
 		unsigned short	sectors_per_FAT;
-		unsigned short	sectors_per_track;
+		short			sectors_per_track;
 		unsigned short	head_count;
 		unsigned int	hidden_sectors;
 		unsigned int	large_sectors;
@@ -33,14 +33,14 @@
 		unsigned char	winnt_flags;
 		unsigned char	signature;
 		unsigned int	volume_serial;
-		unsigned char	volume_label[11];
-		unsigned char	system_identifier[8];
+		char			volume_label[11];
+		char			system_identifier[8];
 		#ifdef USE_FAT32
 		unsigned char	boot_code[420];
 		#else
 		unsigned char	boot_code[448];
 		#endif
-		unsigned char	boot_signature[2];
+		unsigned short	boot_signature;
 	}__attribute__((packed));
 
 void dump_ebpb(struct ebpb_t* block);
