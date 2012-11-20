@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-//#define USE_FAT32
+#define USE_FAT32
 #include "disk.h"
 #include "fat.h"
 
