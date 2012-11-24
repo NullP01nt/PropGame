@@ -18,9 +18,9 @@
 		unsigned int sector_count;
 	};
 
-	struct bpb_t {
+	struct boot_param_block_t {
 		unsigned char	assembly[3];
-				char	OEM_identifier[8];
+		char			OEM_identifier[8];
 		unsigned short	bytes_per_sector;
 		unsigned char	sectors_per_cluster;
 		unsigned short	reserved_sectors;
@@ -35,8 +35,8 @@
 		unsigned int	large_sectors;
 	}__attribute__((packed));
 
-	struct ebpb_t {
-		struct bpb_t bpb;
+	struct eboot_param_block_t {
+		struct boot_param_block_t bpb;
 		#ifdef USE_FAT32
 		unsigned int	sectors_per_fat;
 		unsigned short	flags;
@@ -61,6 +61,6 @@
 	}__attribute__((packed));
 
 
-	void print_ptable(struct partition_entry_t* table);
-	void dump_ebpb(struct ebpb_t* block);
+	void print_partition(struct partition_entry_t* table);
+	void dump_eboot(struct eboot_param_block_t* block);
 #endif

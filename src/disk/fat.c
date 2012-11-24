@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "fat.h"
 
-void print_ptable(struct partition_entry_t* table) {
+void print_partition(struct partition_entry_t* table) {
 	if(table->sector_count<=0 || table->system_id==0) {
 		printf("This is not an initialized partition\n");
 	} else {	
@@ -23,7 +23,7 @@ void print_ptable(struct partition_entry_t* table) {
 	}
 }
 
-void dump_ebpb(struct ebpb_t* block) {
+void dump_eboot(struct eboot_param_block_t* block) {
 	int i =0;
 	printf("Assembly: ");
 	for(i=0; i<sizeof(block->bpb.assembly);i++) {
