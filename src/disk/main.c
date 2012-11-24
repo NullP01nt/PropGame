@@ -4,7 +4,6 @@
 #include <fcntl.h>
 
 #define USE_FAT32
-#include "disk.h"
 #include "fat.h"
 
 void read_from_file(int fdes, unsigned char *buffer, unsigned int bytes_to_read, unsigned int start) {
@@ -30,8 +29,8 @@ int main(int argc, char** argv) {
 		perror("Open");
 		exit(1);
 	}
-	read_from_file(ddes,buffer,sizeof(struct ptable_entry_t),PTABLE_OFFSET);
-	struct ptable_entry_t* partition = (struct ptable_entry_t*)buffer;
+	read_from_file(ddes,buffer,sizeof(struct partition_entry_t),PTABLE_OFFSET);
+	struct partition_entry_t* partition = (struct partition_entry_t*)buffer;
 	print_ptable(partition);
 	int relative_sector = SECTOR_OFFSET(partition->rel_sector);	
 	read_from_file(ddes,buffer,sizeof(struct ebpb_t),relative_sector);

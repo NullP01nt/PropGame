@@ -1,6 +1,23 @@
 #ifndef SEG_FAT_H
 	#define SEG_FAT_H
 
+
+	#define SECTOR_SIZE 512 // Sector size in bytes
+	#define SECTOR_OFFSET(x) ((x)*SECTOR_SIZE)
+	#define MBR_SECTOR 0 // Stating the obvious, I know, but it makes things easier at some point
+	#define PTABLE_OFFSET 0x1be
+	#define MAX_PARTITIONS 4
+	struct partition_entry_t {
+		unsigned char bootflag;
+		unsigned char hd_start;
+		unsigned short cs_start;
+		unsigned char system_id;
+		unsigned char hd_end;
+		unsigned short cs_end;
+		unsigned int rel_sector;
+		unsigned int sector_count;
+	};
+
 	struct bpb_t {
 		unsigned char	assembly[3];
 				char	OEM_identifier[8];
@@ -43,5 +60,7 @@
 		unsigned short	boot_signature;
 	}__attribute__((packed));
 
-void dump_ebpb(struct ebpb_t* block);
+
+	void print_ptable(struct partition_entry_t* table);
+	void dump_ebpb(struct ebpb_t* block);
 #endif
