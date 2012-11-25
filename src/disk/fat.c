@@ -1,59 +1,76 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "fat.h"
-
-void print_partition(struct partition_entry_t* table) {
-	if(table->sector_count<=0 || table->system_id==0) {
-		printf("This is not an initialized partition\n");
-	} else {	
-		printf("Bootflag: %s\n",table->bootflag==0x80?"True":"False");
-		printf("Starting Head: %d\n",table->hd_start);
-		int start_sect = ((table->cs_start)>>10)&0x3F;
-		int start_cyl = (table->cs_start)&0x3FF;
-		printf("Starting Sector: %d\n",start_sect);
-		printf("Starting Cylinder: %d\n",start_cyl);
-		printf("System ID: %02x\n",table->system_id);
-		printf("Ending Head: %d\n",table->hd_end);
-		int end_sect = ((table->cs_end)>>10)&0x3F;
-		int end_cyl = (table->cs_end)&0x3FF;
-		printf("Ending Sector: %d\n",end_sect);
-		printf("Ending Cylinder: %d\n",end_cyl);
-		printf("Relative Sector: %d\n",table->rel_sector);
-		printf("Total sectors: %d\n",table->sector_count);
+void print_hex_bytes(unsigned char* data,int numBytes) {
+	int i=0;
+	for(i=0; i<numBytes;i++) {
+		if(i%16==0) printf("\n\t");
+		printf("%02x ",data[i]);
 	}
 }
 
-void dump_eboot(struct eboot_param_block_t* block) {
-	int i =0;
-	printf("Assembly: ");
-	for(i=0; i<sizeof(block->bpb.assembly);i++) {
-		printf("%02X ",block->bpb.assembly[i]);
+void print_char_bytes(unsigned char* data, int numBytes) {
+	int i=0;
+	for(i=0; i<numBytes;i++) {
+		printf("%c",(char)data[i]);
 	}
 	printf("\n");
-	printf("OEM ID: %s\n",block->bpb.OEM_identifier);
-	printf("Bytes per sector: %d\n",block->bpb.bytes_per_sector);
-	printf("Sectors per cluster: %d\n",block->bpb.sectors_per_cluster);
-	printf("Reserved sectors: %d\n",block->bpb.reserved_sectors);
-	printf("#FAT tables: %d\n",block->bpb.FAT_count);
-	printf("#Directory entries: %d\n",block->bpb.dir_entry_count);
-	printf("Total sectors: %d\n",block->bpb.total_sectors);
-	printf("Media Descriptor: %02x\n",block->bpb.media_descriptor);
-	printf("Sectors per FAT: %d\n",block->bpb.sectors_per_FAT);
-	printf("Sectors per track: %d\n",block->bpb.sectors_per_track);
-	printf("Head count: %d\n",block->bpb.head_count);
-	printf("Hidden sectors: %d\n", block->bpb.hidden_sectors);
-	printf("Large sectors: %d\n", block->bpb.large_sectors);
+}
+
+void print_partition(struct partitionInfo_t* table) {
+	if(table->sectorsTotal<=0 || table->type==0) {
+		printf("This is not an initialized partition\n");
+	} else {	
+		printf("Bootflag: %s\n",table->status==0x80?"True":"False");
+		printf("Starting Head: %d\n",table->headStart);
+		int start_sect = ((table->cylSectStart)>>10)&0x3F;
+		int start_cyl = (table->cylSectStart)&0x3FF;
+		printf("Starting Sector: %d\n",start_sect);
+		printf("Starting Cylinder: %d\n",start_cyl);
+		printf("System ID: %02x\n",table->type);
+		printf("Ending Head: %d\n",table->headEnd);
+		int end_sect = ((table->cylSectEnd)>>10)&0x3F;
+		int end_cyl = (table->cylSectEnd)&0x3FF;
+		printf("Ending Sector: %d\n",end_sect);
+		printf("Ending Cylinder: %d\n",end_cyl);
+		printf("Relative Sector: %d\n",table->firstSector);
+		printf("Total sectors: %d\n",table->sectorsTotal);
+	}
+}
+
+void dump_eboot_F32(struct eboot_param_block_F32_t* block) {
+	printf("Jump Assembly: ");
+	print_hex_bytes(block->jumpBoot,3);
 	printf("\n");
+
+	printf("OEM Identifier: %s\n",block->OEMName);
+	printf("Bytes per sector: %d\n",block->bytesPerSector);
+	printf("Sectors per cluster: %d\n",block->sectorPerCluster);
+	printf("Reserved sectors: %d\n",block->reservedSectorCount);
+	printf("Number of FAT tables: %d\n",block->numberofFATs);
+	printf("Number of Directory entries: %d\n",block->rootEntryCount);
+	printf("Total sectors (F16): %d\n",block->totalSectors_F16);
+	printf("Media Descriptor: %02x\n",block->mediaType);
+	printf("Sectors per FAT (F16): %d\n",block->FATsize_F16);
+	printf("Sectors per track: %d\n",block->sectorsPerTrack);
+	printf("Head count: %d\n",block->numberofHeads);
+	printf("Hidden sectors: %d\n", block->hiddenSectors);
+	printf("Total Sectors (F32): %d\n", block->totalSectors_F32);
+	printf("Sectors per FAT (F32): %d\n", block->FATsize_F32);
+	printf("Flags: %d\n", block->extFlags);
+	printf("FAT Version Number: %d\n", block->FSversion);
+	printf("Root directory cluster: %d\n",block->rootCluster);
+	printf("FileSystem Info cluster: %d\n",block->FSinfo);
+	printf("Backup BootSector cluster: %d\n",block->BackupBootSector);
+	printf("Reserved: ");
+	print_hex_bytes(block->reserved,12);
+	printf("\n");
+	printf("Drive Number: %d\n",block->driveNumber);
+	printf("Reserved: %d\n", block->reserved1);
+	printf("Volume ID: %d\n", block->volumeID);
 	printf("Volume Label: ");
-	for(i=0;i<sizeof(block->volume_label);i++) {
-		if(block->volume_label[i]==0) break;
-		printf("%c",block->volume_label[i]);
-	}
-	printf("\n");
-	printf("Sys ID: ");
-	for(i=0;i<sizeof(block->system_identifier);i++) {
-		if(block->system_identifier[i]==0) break;
-		printf("%c",block->system_identifier[i]);
-	}
-	printf("\n");
+	print_char_bytes(block->volumeLabel,11);
+	printf("Filesystem Type: ");
+	print_char_bytes(block->fileSystemType,8);
+	
 }

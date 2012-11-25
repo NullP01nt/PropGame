@@ -29,14 +29,14 @@ int main(int argc, char** argv) {
 		perror("Open");
 		exit(1);
 	}
-	read_from_file(ddes,buffer,sizeof(struct partition_entry_t),PTABLE_OFFSET);
-	struct partition_entry_t* partition = (struct partition_entry_t*)buffer;
+	read_from_file(ddes,buffer,sizeof(struct partitionInfo_t),PTABLE_OFFSET);
+	struct partitionInfo_t* partition = (struct partitionInfo_t*)buffer;
 	print_partition(partition);
-	int relative_sector = SECTOR_OFFSET(partition->rel_sector);	
-	read_from_file(ddes,buffer,sizeof(struct eboot_param_block_t),relative_sector);
+	int relative_sector = SECTOR_OFFSET(partition->firstSector);
+	read_from_file(ddes,buffer,sizeof(struct eboot_param_block_F32_t),relative_sector);
 	printf("--- FAT ---\n");
-	struct eboot_param_block_t* ebpb = (struct eboot_param_block_t*)buffer;
-	dump_eboot(ebpb);
+	struct eboot_param_block_F32_t* ebpb = (struct eboot_param_block_F32_t*)buffer;
+	dump_eboot_F32(ebpb);
 	ret=close(ddes);
 	if(ret==-1) {
 		perror("Close");
