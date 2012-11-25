@@ -101,3 +101,19 @@ void dump_eboot_F32(struct eboot_param_block_F32_t* block) {
 	print_char_bytes(block->fileSystemType,8);
 }
 
+/********************************************************************
+* Function: to read data from boot sector, to determine important parameters like bytesPerSector, sectorsPerCluster etc.
+* Arguments: none
+* return: none
+********************************************************************/
+unsigned char getBootSectorData(void) {
+	struct MBRInfo_t *mbr;
+	struct extended_boot_param_F32_t *ebpb;
+	struct partitionInfo_t *partition;
+	unusedSectors = 0;
+
+
+	ebpb = (struct eboot_param_block_F32_t*)buffer;
+	
+	return 1;
+}
