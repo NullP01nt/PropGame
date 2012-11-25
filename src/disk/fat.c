@@ -9,7 +9,7 @@ void print_hex_bytes(unsigned char* data,int numBytes) {
 	}
 }
 
-void print_char_bytes(unsigned char* data, int numBytes) {
+void print_char_bytes(char* data, int numBytes) {
 	int i=0;
 	for(i=0; i<numBytes;i++) {
 		printf("%c",(char)data[i]);
