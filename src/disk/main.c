@@ -17,7 +17,7 @@ void read_from_file(int fdes, unsigned char *buffer, unsigned int bytes_to_read,
 }
 
 int main(int argc, char** argv) {
-	char* filename = "usb_2GB.img";
+	char* filename = "sd_128mb.img";
 	unsigned char buffer[SECTOR_SIZE];
 	if(argc>=2) {
 		filename=argv[1];
