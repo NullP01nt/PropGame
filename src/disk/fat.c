@@ -37,12 +37,38 @@ void print_partition(struct partitionInfo_t* table) {
 		printf("Total sectors: %d\n",table->sectorsTotal);
 	}
 }
+void dump_eboot_F16(struct eboot_param_block_F16_t* block) {
+	printf("Jump Assembly: ");
+	print_hex_bytes(block->jumpBoot,3);
+	printf("\n");
+	printf("OEM Identifier: %s\n",block->OEMName);
+	printf("Bytes per sector: %d\n",block->bytesPerSector);
+	printf("Sectors per cluster: %d\n",block->sectorPerCluster);
+	printf("Reserved sectors: %d\n",block->reservedSectorCount);
+	printf("Number of FAT tables: %d\n",block->numberofFATs);
+	printf("Number of Directory entries: %d\n",block->rootEntryCount);
+	printf("Total sectors (F16): %d\n",block->totalSectors_F16);
+	printf("Media Descriptor: %02x\n",block->mediaType);
+	printf("Sectors per FAT (F16): %d\n",block->FATsize_F16);
+	printf("Sectors per track: %d\n",block->sectorsPerTrack);
+	printf("Head count: %d\n",block->numberofHeads);
+	printf("Hidden sectors: %d\n", block->hiddenSectors);
+	printf("Total Sectors (F32): %d\n", block->totalSectors_F32);
+	printf("Drive Number: %d\n", block->driveNumber);
+	printf("Boot Signature: %02X\n",block->bootSignature);
+	printf("Volume ID: %d\n",block->volumeID);
+	printf("Volume Label: ");
+	print_char_bytes(block->volumeLabel,11);
+	printf("\n");
+	printf("Filesystem Type: ");
+	print_char_bytes(block->fileSystemType,8);
+	printf("\n");
+}
 
 void dump_eboot_F32(struct eboot_param_block_F32_t* block) {
 	printf("Jump Assembly: ");
 	print_hex_bytes(block->jumpBoot,3);
 	printf("\n");
-
 	printf("OEM Identifier: %s\n",block->OEMName);
 	printf("Bytes per sector: %d\n",block->bytesPerSector);
 	printf("Sectors per cluster: %d\n",block->sectorPerCluster);
@@ -67,10 +93,11 @@ void dump_eboot_F32(struct eboot_param_block_F32_t* block) {
 	printf("\n");
 	printf("Drive Number: %d\n",block->driveNumber);
 	printf("Reserved: %d\n", block->reserved1);
+	printf("Boot Signature: %02X\n", block->bootSignature);
 	printf("Volume ID: %d\n", block->volumeID);
 	printf("Volume Label: ");
 	print_char_bytes(block->volumeLabel,11);
 	printf("Filesystem Type: ");
 	print_char_bytes(block->fileSystemType,8);
-	
 }
+

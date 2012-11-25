@@ -3,7 +3,6 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-#define USE_FAT32
 #include "fat.h"
 
 void read_from_file(int fdes, unsigned char *buffer, unsigned int bytes_to_read, unsigned int start) {

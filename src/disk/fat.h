@@ -40,7 +40,12 @@
 		unsigned short	numberofHeads;
 		unsigned int	hiddenSectors;
 		unsigned int	totalSectors_F32;
-		
+		unsigned char	driveNumber;
+		unsigned char	reserved;			// Reserved
+		unsigned char	bootSignature;
+		unsigned int	volumeID;
+				 char	volumeLabel[11];	//"NO NAME "
+				 char	fileSystemType[8];	//"FAT32"
 		unsigned char	bootData[448];
 		unsigned short	bootEndSignature;	//0xaa55
 	}__attribute__((packed));
