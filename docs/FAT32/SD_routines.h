@@ -18,13 +18,10 @@
 #ifndef _SD_ROUTINES_H_
 #define _SD_ROUTINES_H_
 
-
 #define FAT_TESTING_ONLY
-
 
 #define SD_CS_ASSERT     PORTB &= ~0x02
 #define SD_CS_DEASSERT   PORTB |= 0x02
-
 
 #define GO_IDLE_STATE            0
 #define SEND_OP_COND                 1
@@ -41,15 +38,12 @@
 #define ERASE_SELECTED_BLOCKS    38
 #define CRC_ON_OFF               59
 
-
 #define ON     1
 #define OFF    0
-
 
 extern volatile unsigned long startBlock;
 extern volatile unsigned long totalBlocks;
 extern volatile unsigned char buffer[512];
-
 
 unsigned char SD_init(void);
 unsigned char SD_sendCommand(unsigned char cmd, unsigned long arg);
@@ -58,6 +52,5 @@ unsigned char SD_writeSingleBlock(unsigned long startBlock);
 unsigned char SD_readMultipleBlock (unsigned long startBlock, unsigned long totalBlocks);
 unsigned char SD_writeMultipleBlock(unsigned long startBlock, unsigned long totalBlocks);
 unsigned char SD_erase (unsigned long startBlock, unsigned long totalBlocks);
-
 
 #endif
