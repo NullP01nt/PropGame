@@ -113,7 +113,7 @@ unsigned char getBootSectorData(void) {
 	unusedSectors = 0;
 
 
-	ebpb = (struct eboot_param_block_F32_t*)buffer;
+	//ebpb = (struct eboot_param_block_F32_t*)buffer;
 	
 	return 1;
 }
