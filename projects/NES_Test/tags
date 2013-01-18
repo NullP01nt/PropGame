@@ -1,0 +1,31 @@
+!_TAG_FILE_FORMAT	1	/original ctags format/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+BITS	/home/segf4ult/Projects/Propeller/NES_Test/NES_Test.c	19
+BTN_A	/home/segf4ult/Projects/Propeller/NES_Test/NES_Test.c	36
+BTN_B	/home/segf4ult/Projects/Propeller/NES_Test/NES_Test.c	35
+BTN_DOWN	/home/segf4ult/Projects/Propeller/NES_Test/NES_Test.c	31
+BTN_LEFT	/home/segf4ult/Projects/Propeller/NES_Test/NES_Test.c	30
+BTN_RIGHT	/home/segf4ult/Projects/Propeller/NES_Test/NES_Test.c	29
+BTN_SELECT	/home/segf4ult/Projects/Propeller/NES_Test/NES_Test.c	34
+BTN_START	/home/segf4ult/Projects/Propeller/NES_Test/NES_Test.c	33
+BTN_UP	/home/segf4ult/Projects/Propeller/NES_Test/NES_Test.c	32
+CLOCK	/home/segf4ult/Projects/Propeller/NES_Test/NES_Test.c	15
+DATA1	/home/segf4ult/Projects/Propeller/NES_Test/NES_Test.c	17
+DATA2	/home/segf4ult/Projects/Propeller/NES_Test/NES_Test.c	18
+HIGH	/home/segf4ult/Projects/Propeller/NES_Test/NES_Test.c	25
+INPUT	/home/segf4ult/Projects/Propeller/NES_Test/NES_Test.c	23
+LATCH	/home/segf4ult/Projects/Propeller/NES_Test/NES_Test.c	16
+LOW	/home/segf4ult/Projects/Propeller/NES_Test/NES_Test.c	26
+OUTPUT	/home/segf4ult/Projects/Propeller/NES_Test/NES_Test.c	22
+P1_BUTTONS	/home/segf4ult/Projects/Propeller/NES_Test/NES_Test.c	/^unsigned char P1_BUTTONS;$/
+P2_BUTTONS	/home/segf4ult/Projects/Propeller/NES_Test/NES_Test.c	/^unsigned char P2_BUTTONS;$/
+buttons	/home/segf4ult/Projects/Propeller/NES_Test/NES_Test.c	/^unsigned char buttons()$/
+init_gamepad	/home/segf4ult/Projects/Propeller/NES_Test/NES_Test.c	/^int init_gamepad()$/
+main	/home/segf4ult/Projects/Propeller/NES_Test/NES_Test.c	/^int main()$/
+pinSet	/home/segf4ult/Projects/Propeller/NES_Test/NES_Test.c	/^void pinSet(int pin, int value)$/
+print_buttons	/home/segf4ult/Projects/Propeller/NES_Test/NES_Test.c	/^void print_buttons(unsigned char input) {$/
+readButtons	/home/segf4ult/Projects/Propeller/NES_Test/NES_Test.c	/^void readButtons() {$/
