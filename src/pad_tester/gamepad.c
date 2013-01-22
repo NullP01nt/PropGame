@@ -4,15 +4,22 @@
 #include "gamepad.h"
 #include "pins.h"
 
-extern uint8_t PAD_ONE;
-extern uint8_t PAD_TWO;
-
 #ifndef MP_MODE
 #define SP_MODE
 #endif
 
+extern uint8_t PAD_ONE;
+#ifdef MP_MODE
+#undef SP_MODE
+extern uint8_t PAD_TWO;
+#endif
+
 void InitGPadIO(void) {
+	#ifdef MP_MODE
 	DIRA &= ~((1<<GP_D1)|(1<<GP_D2));		// Set GP_D1 and GP_D2 as INPUT
+	#else // SP_MODE is defined
+	DIRA &= ~((1<<GP_D1));					// Set GP_D1 as INPUT
+	#endif
 	DIRA |= ((1<<GP_CLK)|(1<<GP_LATCH));		// Set GP_CLK and GP_LATCH as OUTPUT
 
 	pinOut(GP_LATCH,HIGH);
