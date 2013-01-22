@@ -19,7 +19,7 @@
 #define HIGH		1
 #define LOW			0
 
-void	pinSet(int,int);
+void	pinOut(int,int);
 uint8_t	pinIn(int);
 
 #endif

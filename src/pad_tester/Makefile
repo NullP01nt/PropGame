@@ -26,7 +26,8 @@ all:	$(DRVDIR)/pad_tester.elf
 OBJS=\
 $(OBJDIR)/pins.o \
 $(OBJDIR)/vga.o \
-$(OBJDIR)/gamepad.o
+$(OBJDIR)/gamepad.o \
+$(OBJDIR)/pad_tester.o
 
 $(DRVDIR)/pad_tester.elf:	$(DRVDIR) $(OBJS)
 	propeller-elf-gcc $(CFLAGS) -o $@ $(OBJS)

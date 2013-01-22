@@ -13,8 +13,8 @@
 
 #define PAD_BIT_LENGTH	8
 
+void InitGPadIO(void);
 void readPads(void);
-void InitGPads(void);
-void readButtons(int);
+uint8_t readButtons(int);
 
 #endif
