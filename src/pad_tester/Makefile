@@ -59,3 +59,7 @@ $(DIRS):
 clean:
 	@$(RM) -rf $(OBJDIR)
 	@$(RM) -rf $(DRVDIR)
+
+.PHONY: run
+run: $(DRVDIR)/pad_tester.elf
+	propeller-load -I $(BUILDROOT) -bGAMEBLADE -r -S -t $(DRVDIR)/pad_tester.elf
