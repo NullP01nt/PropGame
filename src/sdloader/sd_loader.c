@@ -80,8 +80,8 @@ int main(void)
     sd_mbox = vm_mbox - 2;
     sd_mbox[0] = 0xffffffff;
     sd_id = cognew(_load_start_coguser2, sd_mbox);
-    while (sd_mbox[0])
-        ;
+
+	while (sd_mbox[0]);
     
     params[0] = (uint32_t)xmm_mbox;
     params[1] = cache_addr;
@@ -228,6 +228,3 @@ static uint32_t write_flash_page(uint32_t addr, uint8_t *buffer, uint32_t count)
         ;
     return xmm_mbox[1];
 }
-
-
-

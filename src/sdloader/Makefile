@@ -21,7 +21,7 @@ CFLAGS=-Os -Wall -mlmm
 
 HDRS=sd_loader.h fatread.h sdio.h pex.h
 
-all:	$(DRVDIR)/sd_loader.elf $(DRVDIR)/sd_cache_loader.elf
+all:	$(DRVDIR)/sd_loader.elf
 
 SDLOADER_OBJS=\
 $(OBJDIR)/sd_loader.o \
@@ -29,17 +29,8 @@ $(OBJDIR)/fatread.o \
 $(OBJDIR)/sdio.o \
 $(OBJDIR)/vm_start.o
 
-SDCACHELOADER_OBJS=\
-$(OBJDIR)/sd_cache_loader.o \
-$(OBJDIR)/fatread.o \
-$(OBJDIR)/sdio.o \
-$(OBJDIR)/vm_start.o
-
 $(DRVDIR)/sd_loader.elf:	$(DRVDIR) $(SDLOADER_OBJS)
 	propeller-elf-gcc $(CFLAGS) -o $@ $(SDLOADER_OBJS)
-
-$(DRVDIR)/sd_cache_loader.elf:	$(DRVDIR) $(SDCACHELOADER_OBJS)
-	propeller-elf-gcc $(CFLAGS) -o $@ $(SDCACHELOADER_OBJS)
 
 #########
 # RULES #
