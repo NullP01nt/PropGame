@@ -1,7 +1,0 @@
-VGA.c
->compiler=C
->memtype=cog
->optimize=-Os
->-fno-exceptions
->-Dprintf=__simple_printf
->BOARD::ASC
