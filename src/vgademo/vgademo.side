@@ -6,9 +6,8 @@ vga.c
 draw.c
 text.c
 text2.c
-nescontroller.c
 >compiler=C
 >memtype=xmmc
 >optimize=-Os
 >-fno-exceptions
->BOARD::
+>BOARD::PROTOBOARD

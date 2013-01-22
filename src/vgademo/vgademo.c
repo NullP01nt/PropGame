@@ -751,6 +751,9 @@ void DisplayRomFont2(void)
     
 }
 
+unsigned char P1_BUTTONS;
+unsigned char P2_BUTTONS;
+
 int main(void)
 {
     OUTA = 0;
