@@ -21,7 +21,7 @@ CFLAGS=-Os -Wall -mlmm
 
 HDRS= fileio.h
 
-all:	$(DRVDIR)/segloader.elf
+all:	clean $(DRVDIR)/segloader.elf
 
 OBJS=\
 $(OBJDIR)/segloader.o\
@@ -61,4 +61,4 @@ clean:
 
 .PHONY: run
 run: $(DRVDIR)/segloader.elf
-	propeller-load -I $(BUILDROOT) -bGAMEBLADE -r -S -t $(DRVDIR)/pad_tester.elf
+	propeller-load -I $(BUILDROOT) -bGAMEBLADE -r -S -t $(DRVDIR)/segloader.elf

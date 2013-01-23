@@ -15,11 +15,14 @@
 FILE *stdinfile;
 FILE *stdoutfile;
 
-void listFiles(char* loadpath) {
+#define FILTER_EXTENSION "pex"
+
+void listFilesByExt(char* loadpath, char* ext) {
 	int i;
 	char *ptr;
 	char fname[13];
 	char *path = "./";
+	char fext[4];
 	DIR *dirp;
 	struct dirent *entry;
 
@@ -46,11 +49,20 @@ void listFiles(char* loadpath) {
 			*ptr++ = '.';
 			for(i=8; i<11; i++) {
 				if(entry->name[i] == ' ') break;
+				fext[i-8] = tolower(entry->name[i]);
 				*ptr++ = tolower(entry->name[i]);
 			}
 		}
 		*ptr = 0;
-		printf("%s\n",fname);
+		fext[3] = 0x00;
+		if(ext!=NULL) {
+			if(strcmp(fext,ext)!=0) continue;
+		} 
+		printf("%s\t%s\n",fname,fext);
 	}
 	closedir(dirp);
+}
+
+void listFiles(char* loadpath) {
+	listFilesByExt(loadpath,NULL);
 }

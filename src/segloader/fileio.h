@@ -8,5 +8,6 @@
 #undef PARALLEL_SPI
 
 void listFiles(char*);
+void listFilesByExt(char*,char*);
 
 #endif

@@ -28,7 +28,13 @@ _Driver *_driverlist[] = {
 };
 
 int main(int argc, char** argv) {
-	printf("BINARY LOADED, ATTEMPTING TO LIST FILES!\n");
+	printf("--- PEX files ---\n");
+	listFilesByExt(NULL,"pex");
+	printf("--- TXT files ---\n");
+	listFilesByExt(NULL,"txt");
+	printf("--- BIN files ---\n");
+	listFilesByExt(NULL,"bin");
+	printf("\n--- All Files ---\n");
 	listFiles(NULL);
-	return 0;	
+	return 0;
 }
