@@ -9,8 +9,6 @@ HDRS =
 
 vgademo.elf:	$(OBJS)
 	@$(CC) $(LDFLAGS) $(OBJS) -o $@ -s
-run:
-	propeller-load -b c3f vgademo.elf -r -t
 
 clean:
 	rm -f *.o *.elf

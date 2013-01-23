@@ -31,6 +31,7 @@ _Driver *_driverlist[] = {
 };
 
 int main(int argc, char** argv) {
+	InitGPadIO();
 	printf("--- PEX Files ---\n");
 	listFilesByExt(NULL,"pex");
 	printf("\n--- All Files ---\n");
