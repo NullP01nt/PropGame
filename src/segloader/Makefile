@@ -19,14 +19,18 @@ RM=rm
 
 CFLAGS=-Os -Wall -mlmm
 
-HDRS= fileio.h
+HDRS= fileio.h\
+	  gamepad.h\
+	  pins.h
 
 all:	clean $(DRVDIR)/segloader.elf
 
 OBJS=\
 $(OBJDIR)/segloader.o\
 $(OBJDIR)/printf.o\
-$(OBJDIR)/fileio.o
+$(OBJDIR)/fileio.o\
+$(OBJDIR)/gamepad.o\
+$(OBJDIR)/pins.o
 
 $(DRVDIR)/segloader.elf:	$(DRVDIR) $(OBJS)
 	propeller-elf-gcc $(CFLAGS) -o $@ $(OBJS)

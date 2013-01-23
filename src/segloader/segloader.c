@@ -17,6 +17,9 @@
 #undef PARALLEL_SPI
 
 #include "fileio.h"
+#include "gamepad.h"
+
+uint8_t PAD_ONE;
 
 extern _Driver _SimpleSerialDriver;
 extern _Driver _FileDriver;
