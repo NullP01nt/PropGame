@@ -127,6 +127,10 @@ endif
 clean:
 	$(RM) -f *.o *.elf *.a *.cog *.ecog *.binary *.dat
 
+.PHONY: eeprom
+eeprom: clean $(NAME).elf
+	$(LOADER) -I../common/ $(BOARDFLAG) $(NAME).elf -e -r -S -t
+
 .PHONY: run
 run: clean $(NAME).elf
-	$(LOADER) $(BOARDFLAG) $(NAME).elf -r -S -t
+	$(LOADER) -I../common/ $(BOARDFLAG) $(NAME).elf -r -S -t
