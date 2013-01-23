@@ -4,21 +4,11 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-BITS	C:/Users/Imara/repository/git/PropGame/src/vgademo/nescontroller.c	19
-BTN_A	C:/Users/Imara/repository/git/PropGame/src/vgademo/nescontroller.c	36
-BTN_B	C:/Users/Imara/repository/git/PropGame/src/vgademo/nescontroller.c	35
-BTN_DOWN	C:/Users/Imara/repository/git/PropGame/src/vgademo/nescontroller.c	31
-BTN_LEFT	C:/Users/Imara/repository/git/PropGame/src/vgademo/nescontroller.c	30
-BTN_RIGHT	C:/Users/Imara/repository/git/PropGame/src/vgademo/nescontroller.c	29
-BTN_SELECT	C:/Users/Imara/repository/git/PropGame/src/vgademo/nescontroller.c	34
-BTN_START	C:/Users/Imara/repository/git/PropGame/src/vgademo/nescontroller.c	33
-BTN_UP	C:/Users/Imara/repository/git/PropGame/src/vgademo/nescontroller.c	32
 Bounce	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	/^void Bounce(void)$/
 CHAR_HEIGHT	C:/Users/Imara/repository/git/PropGame/src/vgademo/text.h	8
 CHAR_HEIGHT2	C:/Users/Imara/repository/git/PropGame/src/vgademo/text2.h	8
 CHAR_WIDTH	C:/Users/Imara/repository/git/PropGame/src/vgademo/text.h	9
 CHAR_WIDTH2	C:/Users/Imara/repository/git/PropGame/src/vgademo/text2.h	9
-CLOCK	C:/Users/Imara/repository/git/PropGame/src/vgademo/nescontroller.c	15
 COLOR_BLACK	C:/Users/Imara/repository/git/PropGame/src/vgademo/draw.h	15
 COLOR_BLUE	C:/Users/Imara/repository/git/PropGame/src/vgademo/draw.h	14
 COLOR_CYAN	C:/Users/Imara/repository/git/PropGame/src/vgademo/draw.h	16
@@ -30,8 +20,6 @@ COLOR_WHITE	C:/Users/Imara/repository/git/PropGame/src/vgademo/draw.h	17
 COLOR_YELLOW	C:/Users/Imara/repository/git/PropGame/src/vgademo/draw.h	20
 CheckInnerWallCollisions	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	/^void CheckInnerWallCollisions(ObjectT *obj, int leftcol, int rightcol, int hole)$/
 CheckWallCollisions	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	/^void CheckWallCollisions(ObjectT *obj, int mincol, int maxcol, int minrow, int maxrow)$/
-DATA1	C:/Users/Imara/repository/git/PropGame/src/vgademo/nescontroller.c	17
-DATA2	C:/Users/Imara/repository/git/PropGame/src/vgademo/nescontroller.c	18
 DRAW_DEFINED	C:/Users/Imara/repository/git/PropGame/src/vgademo/draw.h	9
 DisplayRawRomFont	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	/^void DisplayRawRomFont(void)$/
 DisplayRomFont	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	/^void DisplayRomFont(void)$/
@@ -41,17 +29,10 @@ DrawHorzChar2	C:/Users/Imara/repository/git/PropGame/src/vgademo/text2.c	/^void 
 DrawText	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	/^void DrawText()$/
 DrawVertChar	C:/Users/Imara/repository/git/PropGame/src/vgademo/text.c	/^void DrawVertChar(int col, int row, uchar *ptr2, int stride2, int scale, int color)$/
 DrawVertChar2	C:/Users/Imara/repository/git/PropGame/src/vgademo/text2.c	/^void DrawVertChar2(int col, int row, uint *ptr2, int scale, int color, int odd)$/
-HIGH	C:/Users/Imara/repository/git/PropGame/src/vgademo/nescontroller.c	25
-HOLE_BOT	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	24
-HOLE_TOP	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	23
-INPUT	C:/Users/Imara/repository/git/PropGame/src/vgademo/nescontroller.c	23
-LATCH	C:/Users/Imara/repository/git/PropGame/src/vgademo/nescontroller.c	16
-LOW	C:/Users/Imara/repository/git/PropGame/src/vgademo/nescontroller.c	26
-OUTPUT	C:/Users/Imara/repository/git/PropGame/src/vgademo/nescontroller.c	22
+HOLE_BOT	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	23
+HOLE_TOP	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	22
 ObjectS	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	/^typedef struct ObjectS {$/
 ObjectT	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	/^} ObjectT;$/
-P1_BUTTONS	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	/^unsigned char P1_BUTTONS;$/
-P2_BUTTONS	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	/^unsigned char P2_BUTTONS;$/
 PlotAntiLog	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	/^void PlotAntiLog(void)$/
 PlotLog	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	/^void PlotLog(void)$/
 PlotSine	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	/^void PlotSine(void)$/
@@ -65,9 +46,8 @@ VgaStart	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	/^void Vga
 VgaVarS	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	/^typedef struct VgaVarS {$/
 VgaVarT	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	/^} VgaVarT;$/
 background	C:/Users/Imara/repository/git/PropGame/src/vgademo/draw.c	/^volatile int background = 0;$/
-bitsPerPixel	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	19
+bitsPerPixel	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	18
 buffer1	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	/^    uint32_t *buffer1;$/
-buttons	C:/Users/Imara/repository/git/PropGame/src/vgademo/nescontroller.c	/^unsigned char buttons()$/
 col	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	/^    int col;$/
 color_table	C:/Users/Imara/repository/git/PropGame/src/vgademo/draw.h	/^static unsigned char color_table[COLOR_MAX][3] = {$/
 colortable1	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	/^    uint32_t *colortable1;$/
@@ -84,9 +64,8 @@ frequencyState	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	/^  
 getindex	C:/Users/Imara/repository/git/PropGame/src/vgademo/draw.c	/^inline int getindex(uint8_t *ptr)$/
 height	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	/^    int height;$/
 horizontalLongs	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	/^    uint32_t horizontalLongs;$/
-horizontalPixels	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	21
-horizontalScaling	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	20
-init_gamepad	C:/Users/Imara/repository/git/PropGame/src/vgademo/nescontroller.c	/^int init_gamepad()$/
+horizontalPixels	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	20
+horizontalScaling	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	19
 inittiles	C:/Users/Imara/repository/git/PropGame/src/vgademo/draw.c	/^void inittiles(int val)$/
 invisibleScale	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	/^    uint32_t invisibleScale;$/
 lastindex	C:/Users/Imara/repository/git/PropGame/src/vgademo/draw.c	/^volatile int lastindex = 0;$/
@@ -96,12 +75,9 @@ mass	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	/^    int mass
 ncol	C:/Users/Imara/repository/git/PropGame/src/vgademo/draw.c	12
 nrow	C:/Users/Imara/repository/git/PropGame/src/vgademo/draw.c	13
 object	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	/^    uint32_t *object;$/
-pinSet	C:/Users/Imara/repository/git/PropGame/src/vgademo/nescontroller.c	/^void pinSet(int pin, int value)$/
 pixelColors	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	/^int pixelColors = 0xfc3c000c;$/
 pixelColorsAddress	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	/^    uint32_t *pixelColorsAddress;$/
 prevcol	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	/^    int prevcol;$/
-print_buttons	C:/Users/Imara/repository/git/PropGame/src/vgademo/nescontroller.c	/^void print_buttons(unsigned char input) {$/
-readButtons	C:/Users/Imara/repository/git/PropGame/src/vgademo/nescontroller.c	/^void readButtons() {$/
 row	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	/^    int row;$/
 sine	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	/^int sine(int angle)$/
 syncIndicator	C:/Users/Imara/repository/git/PropGame/src/vgademo/vgademo.c	/^volatile int syncIndicator = 0;$/

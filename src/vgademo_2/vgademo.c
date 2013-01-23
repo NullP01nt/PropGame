@@ -49,6 +49,27 @@ typedef struct VgaVarS {
     uint32_t *syncIndicatorAddress;
 } VgaVarT;
 
+/* prototypes */
+void draw_line(int col, int row);
+void show_score();
+void add_segment();
+void setup_level();
+
+/* constants */
+const int maxrow=15, maxcol=77;
+const int snake_start_col=33,snake_start_row=7;
+const char up_key='a', down_key='z', left_key='o', right_key='p';
+const int pause_length=500000;
+
+
+/* global variables */
+int score, snake_length, speed, obstacles, level, firstpress, high_score=0;
+//char screen_grid[maxrow][maxcol];
+//char direction = right_key;
+struct snake_segment {
+  int row,col;
+} snake[100];
+
 #if 0
 void CheckStack(void)
 {
@@ -446,6 +467,201 @@ void Bounce(void)
     lockindex = 0;
 }
 
+void Bouncing(void)
+{
+    int i, j, k, l;
+    int mode = 0;
+    ObjectT *obj;
+    int maxcol, maxrow;
+    int syncIndicatorPrev;
+
+uint32_t object1[64] = {
+        0xa0000000, 0x0000000a, 0xaaa00000, 0x00000aaa, 0xaaaa0000, 0x0000aaaa,
+        0xaaaa8000, 0x0002aaaa, 0xaaaaa800, 0x002aaaaa, 0xaaaaaa00, 0x00aaaaaa,
+        0xaaaaaa00, 0x00aaaaaa, 0xaaaaaa80, 0x02aaaaaa, 0xaaaaaaa0, 0x0aaaaaaa,
+        0xaaaaaaa0, 0x0aaaaaaa, 0xaaaaaaa8, 0x2aaaaaaa, 0xaaaaaaa8, 0x2aaaaaaa,
+        0xaaaaaaa8, 0x2aaaaaaa, 0xaaaaaaa8, 0x2aaaaaaa, 0xaaaaaaaa, 0xaaaaaaaa,
+        0xaaaaaaaa, 0xaaaaaaaa, 0xaaaaaaaa, 0xaaaaaaaa, 0xaaaaaaaa, 0xaaaaaaaa,
+        0xaaaaaaa8, 0x2aaaaaaa, 0xaaaaaaa8, 0x2aaaaaaa, 0xaaaaaaa8, 0x2aaaaaaa,
+        0xaaaaaaa8, 0x2aaaaaaa, 0xaaaaaaa0, 0x0aaaaaaa, 0xaaaaaaa0, 0x0aaaaaaa,
+        0xaaaaaa80, 0x02aaaaaa, 0xaaaaaa00, 0x00aaaaaa, 0xaaaaaa00, 0x00aaaaaa,
+        0xaaaaa800, 0x002aaaaa, 0xaaaa8000, 0x0002aaaa, 0xaaaa0000, 0x0000aaaa,
+        0xaaa00000, 0x00000aaa, 0xa0000000, 0x0000000a};
+
+    uint32_t object2[64] = {
+        0x05500000, 0x00000000, 0x55554000, 0x00000001, 0x55555400, 0x00000015,
+        0x55555500, 0x00000055, 0x55555540, 0x00000155, 0x55555550, 0x00000555,
+        0x55555550, 0x00000555, 0x55555554, 0x00001555, 0x55555554, 0x00001555,
+        0x55555554, 0x00001555, 0x55555555, 0x00005555, 0x55555555, 0x00005555,
+        0x55555555, 0x00005555, 0x55555555, 0x00005555, 0x55555554, 0x00001555,
+        0x55555554, 0x00001555, 0x55555554, 0x00001555, 0x55555550, 0x00000555,
+        0x55555550, 0x00000555, 0x55555540, 0x00000155, 0x55555500, 0x00000055,
+        0x55555400, 0x00000015, 0x55554000, 0x00000001, 0x05500000, 0x00000000};
+
+    uint32_t object3[64] = {
+        0x000ff000, 0x00ffff00, 0x0ffffff0, 0x0ffffff0, 0x3ffffffc, 0x3ffffffc,
+        0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0x3ffffffc, 0x3ffffffc,
+        0x0ffffff0, 0x0ffffff0, 0x00ffff00, 0x000ff000};
+
+    ObjectT objects[] = {
+        100, 100, 250,  7, 2, (uint32_t *)object1, 32, 32, 64,
+        200, 200, 350,  2,-5, (uint32_t *)object2, 24, 24, 27,
+        300, 300, 450, -5, 3, (uint32_t *)object3, 16, 16,  8};
+
+    int numobj = 3;
+    int leftwall = 640 - 16;
+    int hole = 0;
+    int rightwall = 639;
+    int moveflag;
+    int lockindex1;
+
+    inittiles(0);
+    pixelColors = 0x0c30c000;
+    tilemap = tilemap1;
+    memset(tilemap, 0, 40*30);
+    memset(&tiles[16], 0xdd, 4);
+    memset(&tiles[17], 0x77, 4);
+    memcpy(&tiles[18], &tiles[16], 8);
+    memcpy(&tiles[20], &tiles[16], 16);
+    memcpy(&tiles[24], &tiles[16], 32);
+    tilemap[0] = ++lastindex;
+    drawline( 0, 0,  0, 15, 3);
+    drawline(15, 0, 15, 15, 3);
+    drawline(0, 0, 15, 0, 3);
+    drawline(0, 15, 15, 15, 3);
+    drawline(0, 7, 15, 7, 3);
+    drawline(0, 8, 15, 8, 3);
+    memcpy(&tiles[32], &tiles[16], 32);
+    memset(&tiles[40], 0, 32);
+    memset(&tiles[48], 0, 32);
+    memcpy(&tiles[56], &tiles[16], 32);
+    memset(&tiles[4<<4], 0, 64);
+    memcpy(&tiles[5<<4], &tiles[1<<4], 64);
+    lastindex = 3;
+    PutStringImage(16, 3, "GRAVITY ON", 1, 0, 1);
+    lockindex1 = lockindex = lastindex;
+    
+    for (i = 0; i < 2500; i++)
+    {
+        moveflag = 0;
+
+        // Update the object positions
+        for (j = 0; j < numobj; j++)
+        {
+            obj = &objects[j];
+            obj->prevcol = obj->col;
+            obj->col += obj->delcol;
+            obj->row += obj->delrow;
+        }
+
+#if 0
+        // Check for collisions with other objects
+        for (j = 0; j < numobj-1; j++)
+        {
+            for (k = j + 1; k < numobj; k++)
+                CheckCollision(&objects[j], &objects[k]);
+        }
+#endif
+
+        if (i > 850)
+        {
+            moveflag = 1;
+            leftwall--;
+            if (leftwall < 320)
+            {
+                moveflag = 0;
+                hole = 1;
+                leftwall = 320;
+                rightwall = leftwall + 15;
+            }
+            else
+            {
+                hole = 0;
+                rightwall = 640;
+            }
+            for (j = 0; j < numobj; j++)
+            {
+                CheckInnerWallCollisions(&objects[j], leftwall, rightwall, hole);
+            }
+            
+        }
+
+        // Check for collisions with the walls
+        for (j = 0; j < numobj; j++)
+            CheckWallCollisions(&objects[j], 16, 623, 8, 471);
+
+        // Add gravity after 400 loops
+        if (i > 400 && i < 700)
+        {
+            for (j = 0; j < numobj; j++)
+                objects[j].delrow += 1;
+        }
+
+        // Draw the inner wall
+        drawobject(leftwall, 8, &tiles[1<<4], 16, 8);
+        drawobject(leftwall, 480 - 16, &tiles[1<<4], 16, 8);
+        drawobject(leftwall, 16, &tiles[1<<4], 16, 16);
+        lockindex = lastindex;
+        k = (leftwall >> 4) + (2 * 40);
+        if (leftwall & 15)
+        {
+            for (j = 2; j < 29; j++, k += 40)
+            {
+                if (!hole || j < (HOLE_TOP >> 4) || j >= (HOLE_BOT >> 4))
+                {
+                    tilemap[k] = lastindex - 1;
+                    tilemap[k+1] = lastindex;
+                }
+            }
+        }
+        else
+        {
+            for (j = 2; j < 29; j++, k += 40)
+            {
+                if (!hole || j < (HOLE_TOP >> 4) || j >= (HOLE_BOT >> 4))
+                {
+                    tilemap[k] = lastindex;
+                }
+            }
+        }
+
+        // Draw the objects
+        for (j = 0; j < numobj; j++)
+        {
+            obj = &objects[j];
+            drawobject(obj->col, obj->row, obj->object, obj->width, obj->height);
+        }
+
+        memcpy(tilemap0, tilemap, 30*40);
+        memset(tilemap, 0, 30*40);
+        memset(tilemap, 2, 40);
+        memset(&tilemap[29*40], 3, 40);
+
+        for (j = 0, l = 0; l < 30; j += 40, l++)
+        {
+            tilemap[j] = tilemap[j+39] = 1;
+        }
+        if (i > 400 && i < 700 && (i%25) < 13)
+        {
+            for (j = 0; j < 5; j++)
+                tilemap[82 + j] = lockindex1 - 4 + j;
+        }
+
+        if ((mode ^= 1))
+        {
+            lastindex = (256 + lockindex1) >> 1;
+        }
+        else
+        {
+            lastindex = lockindex1;
+        }
+        if (i == 700) numobj = 12;
+        if (i == 800) numobj = 18;
+    }
+    tilemap = tilemap0;
+    lockindex = 0;
+}
+
 int vga_text_col = 0;
 int vga_text_row = 0;
 
@@ -531,7 +747,7 @@ int main(void)
 
     while (1)
     {
-        Bounce();
+        Bouncing();
     }
 
     return 0;
