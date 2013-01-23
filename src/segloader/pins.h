@@ -15,6 +15,8 @@
 #define SPI_SRAM_CS	4
 #define SPI_VRAM_CS	5
 
+#define VGA_PIN		15
+
 // PIN LOGIC LEVELS
 #define HIGH		1
 #define LOW			0

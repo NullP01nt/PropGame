@@ -16,12 +16,16 @@ CC=propeller-elf-gcc
 ECHO=echo
 MKDIR=mkdir -p
 RM=rm
+MODEL=xmmc
 
-CFLAGS=-Os -Wall -mlmm
+CFLAGS=-Os -Wall -m$(MODEL)
 
 HDRS= fileio.h\
 	  gamepad.h\
-	  pins.h
+	  pins.h\
+	  vga.h\
+	  vga_text.h\
+	  vga_draw.h
 
 all:	clean $(DRVDIR)/segloader.elf
 
@@ -30,7 +34,10 @@ $(OBJDIR)/segloader.o\
 $(OBJDIR)/printf.o\
 $(OBJDIR)/fileio.o\
 $(OBJDIR)/gamepad.o\
-$(OBJDIR)/pins.o
+$(OBJDIR)/pins.o\
+$(OBJDIR)/vga.o\
+$(OBJDIR)/vga_text.o\
+$(OBJDIR)/vga_draw.o
 
 $(DRVDIR)/segloader.elf:	$(DRVDIR) $(OBJS)
 	propeller-elf-gcc $(CFLAGS) -o $@ $(OBJS)

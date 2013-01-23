@@ -38,8 +38,7 @@ void listFilesByExt(char* loadpath, char* ext) {
 	}
 
 	while((entry = readdir(dirp))) {
-		if((entry->attr & ATTR_SYSTEM) || (entry->attr & ATTR_VOLUME_ID) || (entry->attr & ATTR_DIRECTORY)) continue;
-		if(entry->name[0] == '.') continue;
+		if((entry->attr & ATTR_VOLUME_ID) || (entry->attr & ATTR_DIRECTORY) || (entry->name[0] == '.')) continue;
 		ptr = fname;
 		for(i=0; i < 8; i++) {
 			if(entry->name[i] == ' ') break;
@@ -55,8 +54,8 @@ void listFilesByExt(char* loadpath, char* ext) {
 		}
 		*ptr = 0;
 		fext[3] = 0x00;
-		if(ext!=NULL) {
-			if(strcmp(fext,ext)!=0) continue;
+		if(ext != NULL) {
+			if(strcmp(fext, ext) != 0) continue;
 		} 
 		printf("%s\t%s\n",fname,fext);
 	}

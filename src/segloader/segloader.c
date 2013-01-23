@@ -31,12 +31,8 @@ _Driver *_driverlist[] = {
 };
 
 int main(int argc, char** argv) {
-	printf("--- PEX files ---\n");
+	printf("--- PEX Files ---\n");
 	listFilesByExt(NULL,"pex");
-	printf("--- TXT files ---\n");
-	listFilesByExt(NULL,"txt");
-	printf("--- BIN files ---\n");
-	listFilesByExt(NULL,"bin");
 	printf("\n--- All Files ---\n");
 	listFiles(NULL);
 	return 0;

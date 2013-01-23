@@ -69,8 +69,7 @@ void Step(void)
     gets(buffer);
 }
 
-void VgaStart(int pinGroup, int verticalResolution, int *newDisplayPointer,
-int *colortable, int *pixelColors, int *syncIndicator)
+void VgaStart(int pinGroup, int verticalResolution, int *newDisplayPointer, int *colortable, int *pixelColors, int *syncIndicator)
 {
     int i, temp;
     VgaVarT vga;
