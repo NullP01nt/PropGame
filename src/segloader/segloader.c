@@ -60,7 +60,7 @@ int main(int argc, char** argv) {
 	int csr_redraw = 1;
 	InitGPadIO();
 	waitcnt(CLKFREQ/1+CNT);
-	vgaText_start(VGA_BASE_BIN);
+	vgaText_start(VGA_BASE_PIN);
 	sleep(1);
 	listExecutables();
 	drawTitle();
