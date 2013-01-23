@@ -17,6 +17,7 @@
 #undef PARALLEL_SPI
 
 #include "fileio.h"
+#include "vga_text.h"
 #include "gamepad.h"
 
 uint8_t PAD_ONE;
@@ -32,9 +33,14 @@ _Driver *_driverlist[] = {
 
 int main(int argc, char** argv) {
 	InitGPadIO();
-	printf("--- PEX Files ---\n");
+	vgaText_start(16); // Start VGA on base 16
+
+	vgaText_print("Hello, Imara\n");
+	vgaText_print("Hello, Xander\n");
+	vgaText_print("--- PEX Files ---\n");
 	listFilesByExt(NULL,"pex");
-	printf("\n--- All Files ---\n");
+	vgaText_print("\n--- All Files ---\n");
 	listFiles(NULL);
+	while(1);
 	return 0;
 }
