@@ -19,17 +19,16 @@ RM=rm
 
 CFLAGS=-Os -Wall -mlmm
 
-HDRS=pins.h vga.h gamepad.h
+HDRS= fileio.h
 
-all:	$(DRVDIR)/pad_tester.elf
+all:	$(DRVDIR)/segloader.elf
 
 OBJS=\
-$(OBJDIR)/pins.o \
-$(OBJDIR)/vga.o \
-$(OBJDIR)/gamepad.o \
-$(OBJDIR)/pad_tester.o
+$(OBJDIR)/segloader.o\
+$(OBJDIR)/printf.o\
+$(OBJDIR)/fileio.o
 
-$(DRVDIR)/pad_tester.elf:	$(DRVDIR) $(OBJS)
+$(DRVDIR)/segloader.elf:	$(DRVDIR) $(OBJS)
 	propeller-elf-gcc $(CFLAGS) -o $@ $(OBJS)
 
 #########
@@ -61,5 +60,5 @@ clean:
 	@$(RM) -rf $(DRVDIR)
 
 .PHONY: run
-run: $(DRVDIR)/pad_tester.elf
+run: $(DRVDIR)/segloader.elf
 	propeller-load -I $(BUILDROOT) -bGAMEBLADE -r -S -t $(DRVDIR)/pad_tester.elf
