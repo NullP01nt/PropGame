@@ -9,11 +9,15 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdint.h>
-#include "propeller.h"
-#include "cog.h"
-#include "draw.h"
+
+// Propeller Specifics
+#include <propeller.h>
+#include <cog.h>
+
+// Project Headers
+//#include "draw.h"
 #include "text.h"
-#include "text2.h"
+//#include "text2.h"
 
 #define bitsPerPixel      1
 #define horizontalScaling 1
@@ -774,8 +778,8 @@ int main(void)
         //PlotAntiLog();
         //PlotSine();
         //PlotSinewave();
-        //DrawText();
-        Bounce();
+        DrawText();
+        //Bounce();
     }
 
     return 0;
@@ -804,4 +808,3 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 +------------------------------------------------------------------
 */
-

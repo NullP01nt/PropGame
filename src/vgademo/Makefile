@@ -17,3 +17,7 @@ clean:
 
 $(OBJDIR)/%.o:	$(SRCDIR)/%.c $(HDRS)
 	@$(CC) $(CFLAGS) -c $< -o $@
+
+.PHONY: run
+run	: vgademo.elf
+	propeller-load -I./ -bGAMEBLADE -r -S -t vgademo.elf
