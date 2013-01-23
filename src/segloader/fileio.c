@@ -18,10 +18,10 @@ FILE *stdoutfile;
 
 #define EXEC_EXTENSION "pex"
 
-extern char* executables[24][13];
+extern char executables[24][13];
 extern uint8_t fileCount;
 
-void listFilesByExt(char* loadpath, char* ext) {
+/*void listFilesByExt(char* loadpath, char* ext) {
 	int i;
 	char *ptr;
 	char fname[13];
@@ -61,17 +61,56 @@ void listFilesByExt(char* loadpath, char* ext) {
 		if(ext != NULL) {
 			if(strcmp(fext, ext) != 0) continue;
 		}
-		if(fileCount<24) 
+		if(fileCount<24) {
 			strcpy(executables[fileCount++],fname);
+		} else {
+			break;
+		}
 		printf("%s\t%s\n",fname,fext);
 	}
 	closedir(dirp);
-}
+}*/
 
 void listExecutables() {
-	listFilesByExt(NULL, EXEC_EXTENSION);
-}
+	int i;
+	char *ptr;
+	char fname[13];
+	char *path = "./";
+	char fext[4];
+	DIR *dirp;
+	struct dirent *entry;
 
-void listFiles(char* loadpath) {
-	listFilesByExt(loadpath,NULL);
+	path = "./";
+	dirp = opendir(path);
+
+	if(!dirp) {
+		perror(path);
+	}
+
+	while((entry = readdir(dirp))) {
+		if((entry->attr & ATTR_VOLUME_ID) || (entry->attr & ATTR_DIRECTORY) || (entry->name[0] == '.')) continue;
+		ptr = fname;
+		for(i=0; i < 8; i++) {
+			if(entry->name[i] == ' ') break;
+			*ptr++ = tolower(entry->name[i]);
+		}
+		if(entry->name[8] != ' ') {
+			*ptr++ = '.';
+			for(i=8; i<11; i++) {
+				if(entry->name[i] == ' ') break;
+				fext[i-8] = tolower(entry->name[i]);
+				*ptr++ = tolower(entry->name[i]);
+			}
+		}
+		*ptr = 0;
+		fext[3] = 0x00;
+		if(strcmp(fext, EXEC_EXTENSION) != 0) continue;
+		if(fileCount<24) {
+			strcpy(executables[fileCount++],fname);
+		} else {
+			break;
+		}
+		printf("%s\t%s\n",fname,fext);
+	}
+	closedir(dirp);
 }

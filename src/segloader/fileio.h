@@ -8,7 +8,7 @@
 #undef PARALLEL_SPI
 
 void listExecutables(void);
-void listFiles(char*);
-void listFilesByExt(char*,char*);
+//void listFiles(char*);
+//void listFilesByExt(char*,char*);
 
 #endif

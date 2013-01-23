@@ -21,8 +21,9 @@
 
 uint8_t PAD_ONE;
 
-char* executables[24][13];
+char executables[24][13];
 uint8_t fileCount = 0;
+char* filePointer;
 
 extern _Driver _SimpleSerialDriver;
 extern _Driver _FileDriver;
@@ -40,7 +41,7 @@ void drawTitle(void) {
 
 void drawFileList(void) {
 	int txt_col=COL_0_X+1, txt_row=ROW_MIN;
-	int file_index=0;
+	int file_index;
 	for(file_index=0; file_index<fileCount; file_index++) {
 		if(file_index == 12) {
 			txt_col = COL_1_X+1;
@@ -53,11 +54,9 @@ void drawFileList(void) {
 }
 
 int main(int argc, char** argv) {
-	int cursor_col = COL_0_X;
-	int old_col = cursor_col;
-	int cursor_row = ROW_MIN;
-	int old_row = cursor_row;
-	int redraw=1;
+	int csr_col = 0, old_col = 0;
+	int csr_row = ROW_MIN, old_row = csr_row;
+	int csr_redraw = 1;
 	InitGPadIO();
 	waitcnt(CLKFREQ/1+CNT);
 	vgaText_start(16); // Start VGA on base 16
@@ -65,16 +64,16 @@ int main(int argc, char** argv) {
 	listExecutables();
 	drawTitle();
 	drawFileList();
-	printf("Files: %d\n",fileCount);
 	while(1) {
 		readPads();
-		usleep(1500);
-		if(redraw==1) {
-			vgaText_setXY(old_col,old_row);
+		//usleep(1500);
+		if(csr_redraw == 1) {
+			vgaText_setXY(old_col * COL_1_X, old_row);
 			vgaText_out(0x20);
-			vgaText_setXY(cursor_col,cursor_row);
+			vgaText_setXY(csr_col * COL_1_X, csr_row);
 			vgaText_out(0xBB);
-			redraw=0;
+			filePointer = executables[(csr_row-1)+(csr_col*12)];
+			csr_redraw = 0;
 		}
 			if(PAD_ONE & BUTTON_START) {
 				vgaText_setXY(1,1);
@@ -83,33 +82,34 @@ int main(int argc, char** argv) {
 				vgaText_out(0x00);
 				drawTitle();
 				drawFileList();
-				redraw=1;	
-			}else if (PAD_ONE & BUTTON_UP) {
-				old_row = cursor_row;
-				cursor_row--;
-				redraw=1;
+				csr_redraw=1;	
+			} else if (PAD_ONE & BUTTON_A) {
+				vgaText_setXY(6,13);
+				vgaText_print(filePointer);	
+			} else if (PAD_ONE & BUTTON_UP) {
+				old_row = csr_row;
+				csr_row--;
+				csr_redraw=1;
 			} else if (PAD_ONE & BUTTON_DOWN) {
-				old_row = cursor_row;
-				cursor_row++;
-				redraw=1;
+				old_row = csr_row;
+				csr_row++;
+				csr_redraw=1;
 			} else if (PAD_ONE & BUTTON_LEFT) {
-				old_col = cursor_col;
-				cursor_col = COL_0_X;
-				redraw=1;
+				old_col = csr_col;
+				csr_col = 0;
+				csr_redraw=1;
 			} else if (PAD_ONE & BUTTON_RIGHT) {
-				old_col = cursor_col;
-				cursor_col = COL_1_X;
-				redraw=1;
+				old_col = csr_col;
+				csr_col = 1;
+				csr_redraw=1;
 			}
-			if(cursor_row < ROW_MIN) cursor_row = ROW_MIN;
-			if(cursor_row > ROW_MAX) cursor_row = ROW_MAX;
+			if(csr_row < ROW_MIN) csr_row = ROW_MIN;
+			if(csr_row > ROW_MAX) csr_row = ROW_MAX;
+			vgaText_setXY(0,13);
+			vgaText_dec(csr_col ? COL_1_X : COL_0_X);
+			vgaText_putchar(',');
+			vgaText_dec(csr_row);
 		waitcnt(CLKFREQ/50+CNT);
 	}
-	vgaText_print("Hello, Imara\n");
-	vgaText_print("Hello, Xander\n");
-	vgaText_print("--- PEX Files ---\n");
-	listFilesByExt(NULL,"pex");
-	vgaText_print("\n--- All Files ---\n");
-	while(1);
 	return 0;
 }

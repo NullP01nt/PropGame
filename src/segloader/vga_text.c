@@ -51,14 +51,14 @@ static int blank = 0x220;
  */
 static char gpalette[VGA_TEXT_COLORTABLE_SIZE] =     
 {                           // fgRGB  bgRGB    '
-    0b111111, 0b000001,     // %%333, %%001    '0    white / dark blue
+    0b111111, 0b000000,     // %%333, %%001    '0    white / dark blue
     0b111100, 0b010100,     // %%330, %%110    '1   yellow / brown
     0b100010, 0b000000,     // %%202, %%000    '2  magenta / black
     0b010101, 0b111111,     // %%111, %%333    '3     grey / white
     0b001111, 0b000101,     // %%033, %%011    '4     cyan / dark cyan
     0b001000, 0b101110,     // %%020, %%232    '5    green / gray-green
     0b010000, 0b110101,     // %%100, %%311    '6      red / pink
-    0b001111, 0b000001      // %%033, %%003    '7     cyan / blue
+    0b001111, 0b000001,     // %%033, %%003    '7     cyan / blue
 };
 
 char greypalette[VGA_TEXT_COLORTABLE_SIZE] =     
