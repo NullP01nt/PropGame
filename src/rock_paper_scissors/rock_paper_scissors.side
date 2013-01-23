@@ -1,0 +1,6 @@
+rock_paper_scissors.c
+>compiler=C
+>memtype=xmmc
+>optimize=-Os
+>-fno-exceptions
+>BOARD::PROTOBOARD
