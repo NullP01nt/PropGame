@@ -1,7 +1,0 @@
-NES_Test.c
->compiler=C
->memtype=xmmc
->optimize=-Os
->-fno-exceptions
->-Dprintf=__simple_printf
->BOARD::GAMEBLADE

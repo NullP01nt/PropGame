@@ -1,6 +1,0 @@
-HelloProp.c
->compiler=C
->memtype=lmm
->optimize=-Os
->-fno-exceptions
->BOARD::EEPROM
