@@ -10,6 +10,7 @@
 #include <dirent.h>
 #include <sys/sd.h>
 
+#include "pins.h"
 #include "fileio.h"
 #include "vga_text.h"
 #include "gamepad.h"
@@ -59,7 +60,7 @@ int main(int argc, char** argv) {
 	int csr_redraw = 1;
 	InitGPadIO();
 	waitcnt(CLKFREQ/1+CNT);
-	vgaText_start(16); // Start VGA on base 16
+	vgaText_start(VGA_BASE_BIN);
 	sleep(1);
 	listExecutables();
 	drawTitle();
