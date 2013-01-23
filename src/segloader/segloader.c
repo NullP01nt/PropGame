@@ -10,19 +10,19 @@
 #include <dirent.h>
 #include <sys/sd.h>
 
-#undef CALL_MOUNT
-#undef SPINNERET_CARD
-#undef PROP_BOE
-#undef C3_CARD
-#undef PARALLEL_SPI
-
 #include "fileio.h"
 #include "vga_text.h"
 #include "gamepad.h"
 
+#define COL_0_X 0
+#define COL_1_X 14
+#define ROW_MIN 1
+#define ROW_MAX	12
+
 uint8_t PAD_ONE;
 
-char* executables[13];
+char* executables[24][13];
+uint8_t fileCount = 0;
 
 extern _Driver _SimpleSerialDriver;
 extern _Driver _FileDriver;
@@ -33,43 +33,77 @@ _Driver *_driverlist[] = {
 	NULL
 };
 
+void drawTitle(void) {
+	vgaText_setXY(6,0);
+	vgaText_print("GameBlade Loader");
+}
+
+void drawFileList(void) {
+	int txt_col=COL_0_X+1, txt_row=ROW_MIN;
+	int file_index=0;
+	for(file_index=0; file_index<fileCount; file_index++) {
+		if(file_index == 12) {
+			txt_col = COL_1_X+1;
+			txt_row = ROW_MIN;
+		}
+		vgaText_setXY(txt_col,txt_row);
+		vgaText_print(executables[file_index]);
+		txt_row++;
+	}
+}
+
 int main(int argc, char** argv) {
-	int curs_x=1, curs_y=1;
-	int old_x=1, old_y=1;
+	int cursor_col = COL_0_X;
+	int old_col = cursor_col;
+	int cursor_row = ROW_MIN;
+	int old_row = cursor_row;
+	int redraw=1;
 	InitGPadIO();
-	vgaText_start(16); // Start VGA on base 16
 	waitcnt(CLKFREQ/1+CNT);
+	vgaText_start(16); // Start VGA on base 16
+	sleep(1);
 	listExecutables();
+	drawTitle();
+	drawFileList();
+	printf("Files: %d\n",fileCount);
 	while(1) {
 		readPads();
-		vgaText_out(0x00);
-		usleep(250);
-		old_x = curs_x;
-		old_y = curs_y;
-		if(PAD_ONE & BUTTON_START) {
-			vgaText_setXY(1,0);
-			vgaText_str("START PRESSED");
-		} else if (PAD_ONE & BUTTON_UP) {
-			curs_y--;
-		} else if (PAD_ONE & BUTTON_DOWN) {
-			curs_y++;
-		} else if (PAD_ONE & BUTTON_LEFT) {
-			curs_x--;
-		} else if (PAD_ONE & BUTTON_RIGHT) {
-			curs_x++;
-		}
-		if(curs_x<0) curs_x = 0;
-		if(curs_x>=29) curs_x = 29;
-		if(curs_y<0) curs_y = 0;
-		if(curs_y>12) curs_y = 12;
-		if(curs_x != old_x && curs_y != old_y) {
-			vgaText_setXY(old_x,old_y);
+		usleep(1500);
+		if(redraw==1) {
+			vgaText_setXY(old_col,old_row);
 			vgaText_out(0x20);
+			vgaText_setXY(cursor_col,cursor_row);
+			vgaText_out(0xBB);
+			redraw=0;
 		}
-		vgaText_setXY(curs_x,curs_y);
-		vgaText_out(0xBB);
-		//printf("%d\t%d\n",curs_x,curs_y);
-		usleep(1000);
+			if(PAD_ONE & BUTTON_START) {
+				vgaText_setXY(1,1);
+				vgaText_str("START PRESSED");
+			} else if (PAD_ONE & BUTTON_B) {
+				vgaText_out(0x00);
+				drawTitle();
+				drawFileList();
+				redraw=1;	
+			}else if (PAD_ONE & BUTTON_UP) {
+				old_row = cursor_row;
+				cursor_row--;
+				redraw=1;
+			} else if (PAD_ONE & BUTTON_DOWN) {
+				old_row = cursor_row;
+				cursor_row++;
+				redraw=1;
+			} else if (PAD_ONE & BUTTON_LEFT) {
+				old_col = cursor_col;
+				cursor_col = COL_0_X;
+				redraw=1;
+			} else if (PAD_ONE & BUTTON_RIGHT) {
+				old_col = cursor_col;
+				cursor_col = COL_1_X;
+				redraw=1;
+			}
+			if(cursor_row < ROW_MIN) cursor_row = ROW_MIN;
+			if(cursor_row > ROW_MAX) cursor_row = ROW_MAX;
+		waitcnt(CLKFREQ/50+CNT);
 	}
 	vgaText_print("Hello, Imara\n");
 	vgaText_print("Hello, Xander\n");

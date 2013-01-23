@@ -18,6 +18,9 @@ FILE *stdoutfile;
 
 #define EXEC_EXTENSION "pex"
 
+extern char* executables[24][13];
+extern uint8_t fileCount;
+
 void listFilesByExt(char* loadpath, char* ext) {
 	int i;
 	char *ptr;
@@ -57,7 +60,9 @@ void listFilesByExt(char* loadpath, char* ext) {
 		fext[3] = 0x00;
 		if(ext != NULL) {
 			if(strcmp(fext, ext) != 0) continue;
-		} 
+		}
+		if(fileCount<24) 
+			strcpy(executables[fileCount++],fname);
 		printf("%s\t%s\n",fname,fext);
 	}
 	closedir(dirp);
