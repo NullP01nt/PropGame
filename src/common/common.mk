@@ -128,5 +128,5 @@ clean:
 	$(RM) -f *.o *.elf *.a *.cog *.ecog *.binary *.dat
 
 .PHONY: run
-run: $(NAME).elf
+run: clean $(NAME).elf
 	$(LOADER) $(BOARDFLAG) $(NAME).elf -r -S -t

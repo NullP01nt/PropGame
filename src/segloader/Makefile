@@ -20,7 +20,6 @@ fileio.o\
 gamepad.o\
 pins.o\
 VGA_firmware.o\
-vgatest.o\
 vga_text.o
 
 CFLAGS = -Os -DPROPELLER_GCC

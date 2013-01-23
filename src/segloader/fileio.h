@@ -7,6 +7,7 @@
 #undef C3_CARD
 #undef PARALLEL_SPI
 
+void listExecutables(void);
 void listFiles(char*);
 void listFilesByExt(char*,char*);
 

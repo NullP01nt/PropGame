@@ -55,7 +55,7 @@
 /**
  * VGA_Text column count
  */
-#define  VGA_TEXT_COLS 30
+#define  VGA_TEXT_COLS 30 
 
 /**
  * VGA_Text row count

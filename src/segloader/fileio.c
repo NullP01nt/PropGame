@@ -11,11 +11,12 @@
 #include <sys/sd.h>
 
 #include "fileio.h"
+#include "vga_text.h"
 
 FILE *stdinfile;
 FILE *stdoutfile;
 
-#define FILTER_EXTENSION "pex"
+#define EXEC_EXTENSION "pex"
 
 void listFilesByExt(char* loadpath, char* ext) {
 	int i;
@@ -60,6 +61,10 @@ void listFilesByExt(char* loadpath, char* ext) {
 		printf("%s\t%s\n",fname,fext);
 	}
 	closedir(dirp);
+}
+
+void listExecutables() {
+	listFilesByExt(NULL, EXEC_EXTENSION);
 }
 
 void listFiles(char* loadpath) {
