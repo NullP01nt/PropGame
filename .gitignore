@@ -12,3 +12,11 @@
 *.lai
 *.la
 *.a
+
+# TeX files
+*.log
+*.aux
+*.synctex.gz
+*.toc
+*.snm
+*.nav
