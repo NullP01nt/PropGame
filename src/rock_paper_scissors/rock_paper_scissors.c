@@ -39,7 +39,7 @@
 #define COL_0_X 0
 #define COL_1_X 14
 #define ROW_MIN 2
-#define ROW_MAX	12
+#define ROW_MAX    12
 uint8_t PAD_ONE;
 
 const char *options[3] = { "Rock    " , "Paper   " , "Scissors" };   //maybe Lizard, spock etc :P
@@ -149,8 +149,6 @@ void game(void) {
             csr_row++;
             csr_redraw();
         }
-        if(csr_row < ROW_MIN) csr_row = ROW_MIN;
-        if(csr_row > ROW_MAX) csr_row = ROW_MAX;
         waitcnt(CLKFREQ/6+CNT);
     }
 }
