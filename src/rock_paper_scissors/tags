@@ -4,4 +4,151 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
+BUTTON_A	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/gamepad.h	12
+BUTTON_B	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/gamepad.h	11
+BUTTON_DOWN	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/gamepad.h	7
+BUTTON_LEFT	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/gamepad.h	6
+BUTTON_RIGHT	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/gamepad.h	5
+BUTTON_SELECT	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/gamepad.h	10
+BUTTON_START	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/gamepad.h	9
+BUTTON_UP	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/gamepad.h	8
+CLR_ROW	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/rock_paper_scissors.c	26
+COL_0_X	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/rock_paper_scissors.c	28
+COL_1_X	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/rock_paper_scissors.c	29
+COM_COL	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/rock_paper_scissors.c	36
+CURSOR_CHAR	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/rock_paper_scissors.c	34
+GP_CLK	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/pins.h	5
+GP_D1	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/pins.h	7
+GP_D2	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/pins.h	8
+GP_LATCH	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/pins.h	6
+HIGH	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/pins.h	21
+InitGPadIO	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/gamepad.c	/^void InitGPadIO(void) {$/
+LOW	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/pins.h	22
+PAD_BIT_LENGTH	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/gamepad.h	14
+PAD_ONE	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/rock_paper_scissors.c	/^uint8_t PAD_ONE;$/
+PLYR_COL	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/rock_paper_scissors.c	35
+ROW_MAX	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/rock_paper_scissors.c	31
+ROW_MIN	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/rock_paper_scissors.c	30
+SPI_MISO	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/pins.h	13
+SPI_MOSI	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/pins.h	12
+SPI_SCK	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/pins.h	11
+SPI_SD_CS	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/pins.h	14
+SPI_SRAM_CS	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/pins.h	15
+SPI_VRAM_CS	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/pins.h	16
+SP_MODE	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/gamepad.c	14
+SP_MODE	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/gamepad.c	9
+VGA_BASE_PIN	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/pins.h	18
+VGA_TEST_PAL_RED_PINK	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	45
+VGA_TEST_RED_PINK	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	31
+VGA_TEXT_COLORS	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	34
+VGA_TEXT_COLORTABLE_SIZE	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	53
+VGA_TEXT_COLS	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	58
+VGA_TEXT_CYAN_BLUE	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	32
+VGA_TEXT_CYAN_DARKCYAN	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	29
+VGA_TEXT_GREEN_WHITE	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	30
+VGA_TEXT_GREY_WHITE	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	28
+VGA_TEXT_LASTROW	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	73
+VGA_TEXT_MAGENTA_BLACK	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	27
+VGA_TEXT_OUT	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	17
+VGA_TEXT_PAL_CYAN_BLUE	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	46
+VGA_TEXT_PAL_CYAN_DARKCYAN	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	43
+VGA_TEXT_PAL_GREEN_WHITE	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	44
+VGA_TEXT_PAL_GREY_WHITE	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	42
+VGA_TEXT_PAL_MAGENTA_BLACK	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	41
+VGA_TEXT_PAL_WHITE_BLUE	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	39
+VGA_TEXT_PAL_YELLOW_BROWN	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	40
+VGA_TEXT_ROWS	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	63
+VGA_TEXT_SCREENSIZE	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	68
+VGA_TEXT_STAT_DISABLED	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	/^    VGA_TEXT_STAT_DISABLED,$/
+VGA_TEXT_STAT_INVISIBLE	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	/^    VGA_TEXT_STAT_INVISIBLE,$/
+VGA_TEXT_STAT_VISIBLE	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	/^    VGA_TEXT_STAT_VISIBLE$/
+VGA_TEXT_WHITE_BLUE	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	25
+VGA_TEXT_YELLOW_BROWN	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	26
+__GBL_GAMEPAD_H	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/gamepad.h	2
+__GBL_PINS_H	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/pins.h	2
+__VGA_TEXT__	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	20
+_vga_text_struct	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	/^typedef struct _vga_text_struct$/
+blank	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^static int blank = 0x220;$/
+clr_battle	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/rock_paper_scissors.c	/^void clr_battle(void) {$/
+col	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^static int col, row, flag;$/
+color	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^static int color = 0;$/
+colors	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	/^    long colors    ; \/\/ pointer to colors (longs)          write-only            $/
+csr_col	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/rock_paper_scissors.c	/^int csr_col = 0, old_col = 0;$/
+csr_redraw	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/rock_paper_scissors.c	/^void csr_redraw(void) {$/
+csr_row	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/rock_paper_scissors.c	/^int csr_row = 2, old_row = 2;$/
+drawOptions	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/rock_paper_scissors.c	/^void drawOptions(void) {$/
+drawTitle	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/rock_paper_scissors.c	/^void drawTitle(void) {$/
+enable	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	/^    long enable    ; \/\/ 0\/non-0 = off\/on                   write-only$/
+flag	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^static int col, row, flag;$/
+gVgaText	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^HUBDATA volatile vgaText_t gVgaText;$/
+game	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/rock_paper_scissors.c	/^void game(void) {$/
+gcolors	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^HUBDATA static int gcolors[VGA_TEXT_COLORTABLE_SIZE];$/
+gpalette	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^static char gpalette[VGA_TEXT_COLORTABLE_SIZE] =     $/
+greypalette	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^char greypalette[VGA_TEXT_COLORTABLE_SIZE] =     $/
+gscreen	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^HUBDATA static short gscreen[VGA_TEXT_SCREENSIZE];$/
+hb	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	/^    long hb        ; \/\/ horizontal back porch ticks        write-only$/
+hd	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	/^    long hd        ; \/\/ horizontal display ticks           write-only$/
+hf	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	/^    long hf        ; \/\/ horizontal front porch ticks       write-only$/
+ho	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	/^    long ho        ; \/\/ horizontal offset                  write-only$/
+hs	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	/^    long hs        ; \/\/ horizontal sync ticks              write-only$/
+ht	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	/^    long ht        ; \/\/ horizontal tiles                   write-only$/
+hx	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	/^    long hx        ; \/\/ horizontal tile expansion          write-only$/
+inGame	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/rock_paper_scissors.c	/^int inGame = 1;$/
+leBattle	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/rock_paper_scissors.c	/^void leBattle(int choice_gamer){$/
+leBigBoss	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/rock_paper_scissors.c	/^int leBigBoss(void) {$/
 main	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/rock_paper_scissors.c	/^int main(void)$/
+mode	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	/^    long mode      ; \/\/ %tihv = tile,interlace,hpol,vpol   write-only$/
+newline	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^static void newline(void)$/
+old_col	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/rock_paper_scissors.c	/^int csr_col = 0, old_col = 0;$/
+old_row	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/rock_paper_scissors.c	/^int csr_row = 2, old_row = 2;$/
+options	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/rock_paper_scissors.c	/^const char *options[3] = { "Rock    " , "Paper   " , "Scissors" };   \/\/maybe Lizard, spock etc :P$/
+pasm	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^HUBDATA static uint32_t pasm[496];$/
+pinIn	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/pins.c	/^uint8_t pinIn(int pin) {$/
+pinOut	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/pins.c	/^void pinOut(int pin, int value)$/
+pins	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	/^    long pins      ; \/\/ %pppttt = pins                     write-only$/
+printc	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^static void printc(int c)$/
+rate	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	/^    long rate      ; \/\/ tick rate (Hz)                     write-only$/
+readButtons	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/gamepad.c	/^uint8_t readButtons(int srcPin) {$/
+readPads	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/gamepad.c	/^void readPads(void) {$/
+result	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/rock_paper_scissors.c	/^char *result[3] = { "Tied  " , "Winner" , "Lost  " };$/
+row	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^static int col, row, flag;$/
+screen	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	/^    long screen    ; \/\/ pointer to screen (words)          write-only$/
+status	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	/^    long status    ; \/\/ 0\/1\/2 = off\/visible\/invisible      read-only   (21 longs)$/
+vb	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	/^    long vb        ; \/\/ vertical back porch lines          write-only$/
+vd	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	/^    long vd        ; \/\/ vertical display lines             write-only$/
+vf	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	/^    long vf        ; \/\/ vertical front porch lines         write-only$/
+vgaTextStat_t	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	/^} vgaTextStat_t;$/
+vgaText_bin	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^void    vgaText_bin(int value, int digits)$/
+vgaText_dec	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^void    vgaText_dec(int value)$/
+vgaText_getColors	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^int vgaText_getColors(void)$/
+vgaText_getColumns	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^int vgaText_getColumns(void)$/
+vgaText_getRows	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^int vgaText_getRows(void)$/
+vgaText_getTile	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^short   vgaText_getTile(int x, int y)$/
+vgaText_getTileColor	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^int vgaText_getTileColor(int x, int y)$/
+vgaText_getX	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^int vgaText_getX(void)$/
+vgaText_getY	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^int vgaText_getY(void)$/
+vgaText_hex	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^void    vgaText_hex(int value, int digits)$/
+vgaText_out	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^void    vgaText_out(int c)$/
+vgaText_print	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^void   vgaText_print(char* s)$/
+vgaText_putchar	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^int     vgaText_putchar(char c)$/
+vgaText_setColorPalette	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^void    vgaText_setColorPalette(char* ptr)$/
+vgaText_setColors	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^void vgaText_setColors(int value)$/
+vgaText_setCoordPosition	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^void    vgaText_setCoordPosition(int x, int y)$/
+vgaText_setCurPosition	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^void    vgaText_setCurPosition(int x, int y)$/
+vgaText_setTile	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^void vgaText_setTile(int x, int y, short tile)$/
+vgaText_setTileColor	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^void vgaText_setTileColor(int x, int y, int color)$/
+vgaText_setX	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^void    vgaText_setX(int value)$/
+vgaText_setXY	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^void    vgaText_setXY(int x, int y)$/
+vgaText_setY	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^void    vgaText_setY(int value)$/
+vgaText_start	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^int     vgaText_start(int basepin)$/
+vgaText_stop	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^void    vgaText_stop(int id)$/
+vgaText_str	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^void    vgaText_str(char* sptr)$/
+vgaText_t	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	/^} vgaText_t;$/
+vo	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	/^    long vo        ; \/\/ vertical offset                    write-only$/
+vs	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	/^    long vs        ; \/\/ vertical sync lines                write-only$/
+vt	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	/^    long vt        ; \/\/ vertical tiles                     write-only$/
+vx	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.h	/^    long vx        ; \/\/ vertical tile expansion            write-only$/
+wait	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^static void wait(int ms)$/
+waitRetry	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/rock_paper_scissors.c	/^void waitRetry(void) {$/
+wordfill	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^static void wordfill(uint16_t *dst, uint16_t val, int len)$/
+wordmove	C:/Users/Imara/repository/git/PropGame/src/rock_paper_scissors/vga_text.c	/^static void wordmove(uint16_t *dst, uint16_t *src, int len)$/
