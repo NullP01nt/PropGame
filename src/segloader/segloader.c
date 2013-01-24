@@ -108,8 +108,9 @@ int main(int argc, char** argv) {
 		} else if (PAD_ONE & BUTTON_B) {
 			redrawScreen();
 		} else if (PAD_ONE & BUTTON_A) {
-			vgaText_setXY(6,13);
-			vgaText_print(filePointer);	
+			//vgaText_setXY(6,13);
+			//vgaText_print(filePointer);	
+			break;
 		} else if (PAD_ONE & BUTTON_UP) {
 			old_col = csr_col;
 			old_row = csr_row;
@@ -133,5 +134,12 @@ int main(int argc, char** argv) {
 		vgaText_dec(csr_row);
 		waitcnt(CLKFREQ/6+CNT);
 	}
+	int i = 0;
+	for(i=1; i<=12; i++) {
+		CLR_ROW(i);
+	}
+	vgaText_setXY(0,6);
+	vgaText_print("Loading: ");
+	vgaText_print(filePointer);
 	return 0;
 }
