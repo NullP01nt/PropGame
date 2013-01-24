@@ -125,7 +125,11 @@ endif
 
 .PHONY: clean
 clean:
-	$(RM) -f *.o *.elf *.a *.cog *.ecog *.binary *.dat
+	$(RM) -f *.o *.elf *.a *.cog *.ecog *.binary *.dat *.pex
+
+.PHONY: pex
+pex:	clean $(NAME).elf
+	$(LOADER) -I../common/ $(BOARDFLAG) -x $(NAME).elf
 
 .PHONY: eeprom
 eeprom: clean $(NAME).elf

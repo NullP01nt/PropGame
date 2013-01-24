@@ -1,65 +1,24 @@
-######################
-# sd_loader Makefile #
-######################
+#######################
+# pad_tester Makefile #
+#######################
 
-ifndef BUILDROOT
-BUILDROOT=.
-endif
+NAME=pad_tester
+BOARD=GAMEBLADE
+MODEL=xmmc
 
-SRCDIR=.
-OBJDIR=$(BUILDROOT)/obj
-DRVDIR=$(BUILDROOT)/build
+SPINDIR=./spin
 
-DIRS = $(OBJDIR) $(DRVDIR)
-
-CC=propeller-elf-gcc
-ECHO=echo
-MKDIR=mkdir -p
-RM=rm
-
-CFLAGS=-Os -Wall -mlmm
-
-HDRS=pins.h vga.h gamepad.h
-
-all:	$(DRVDIR)/pad_tester.elf
+HDRS=\
+	 pins.h\
+	 vga.h\
+	 gamepad.h
 
 OBJS=\
-$(OBJDIR)/pins.o \
-$(OBJDIR)/vga.o \
-$(OBJDIR)/gamepad.o \
-$(OBJDIR)/pad_tester.o
+	 pins.o \
+	 vga.o \
+	 gamepad.o \
+	 pad_tester.o
 
-$(DRVDIR)/pad_tester.elf:	$(DRVDIR) $(OBJS)
-	propeller-elf-gcc $(CFLAGS) -o $@ $(OBJS)
+CFLAGS = -Os -DPROPELLER_GCC
 
-#########
-# RULES #
-#########
-
-$(OBJDIR)/%.o:	$(SRCDIR)/%.c $(OBJDIR) $(HDRS)
-	$(CC) $(CFLAGS) -c $< -o $@
-	@$(ECHO) $@
-
-$(OBJDIR)/%.o:	$(SRCDIR)/%.S $(OBJDIR) $(HDRS)
-	$(CC) $(CFLAGS) -c $< -o $@
-	@$(ECHO) $@
-
-###############
-# DIRECTORIES #
-###############
-
-$(DIRS):
-	$(MKDIR) $@
-
-################
-# CLEAN TARGET #
-################
-
-.PHONY:	clean
-clean:
-	@$(RM) -rf $(OBJDIR)
-	@$(RM) -rf $(DRVDIR)
-
-.PHONY: run
-run: $(DRVDIR)/pad_tester.elf
-	propeller-load -I $(BUILDROOT) -bGAMEBLADE -r -S -t $(DRVDIR)/pad_tester.elf
+include ../common/common.mk

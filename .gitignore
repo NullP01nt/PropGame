@@ -4,6 +4,7 @@
 *.o
 *.out
 *.elf
+*.pex
 
 # Compiled Dynamic libraries
 *.so
