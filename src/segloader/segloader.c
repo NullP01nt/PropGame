@@ -10,6 +10,8 @@
 #include <dirent.h>
 #include <sys/sd.h>
 
+#include "segloader.h"
+
 #include "pins.h"
 #include "fileio.h"
 #include "vga_text.h"
@@ -24,6 +26,15 @@
 #define COL_1_X 14
 #define ROW_MIN 1
 #define ROW_MAX	12
+
+// Loader specifics
+//SdLoaderInfo 	__attribute__((section(".coguser0"))) info_data;				// SD info
+//extern unsigned int _load_start_coguser0[];
+//uint32_t 		__attribute__((section(".coguser1"))) xmm_driver_data[496];		// Cache Driver
+//extern unsigned int _load_start_coguser1[];
+//uint32_t 		__attribute__((section(".coguser2"))) sd_driver_data[496];		// SD Driver
+//extern unsigned int _load_start_coguser2[];
+//extern unsigned int	_load_start_coguser2[];								// vm_start.S code
 
 uint8_t PAD_ONE;
 
@@ -84,6 +95,12 @@ void redrawScreen(void) {
 }
 
 int main(int argc, char** argv) {
+	//uint8_t *buffer = (uint8_t *)_load_start_coguser1;
+	//SdLoaderInfo *info = (SdLoaderInfo *)_load_start_coguser0;
+	//uint32_t cache_addr, load_address;
+	//uint32_t params[5];
+// TODO	
+
 	InitGPadIO();
 	waitcnt(CLKFREQ/1+CNT);
 	vgaText_start(VGA_BASE_PIN);
