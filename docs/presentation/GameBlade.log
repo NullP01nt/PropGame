@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.9.5)  24 JAN 2013 14:16
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.9.5)  24 JAN 2013 15:10
 entering extended mode
  %&-line parsing enabled.
 **GameBlade.tex
@@ -1062,13 +1062,7 @@ Dictionary: translator-theorem-dictionary, Language: English
 ]
 (./GameBlade.toc) [3
 
-]
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 138.
-
- (/usr/share/texmf-texlive/tex/latex/psnfss/ot1pcr.fd
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-)
-[4
+] [4
 
 ] [5
 
@@ -1082,13 +1076,18 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 
 ] [10
 
-] (./GameBlade.toc) [11
+] [11
 
 ] [12
 
-] [13
+] (./GameBlade.toc)
+[13
 
 ] [14
+
+] [15
+
+] [16
 
 ]
 \tf@nav=\write6
@@ -1100,22 +1099,23 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 \tf@snm=\write8
 \openout8 = `GameBlade.snm'.
 
-
-(./GameBlade.aux) ) 
+ (./GameBlade.aux) ) 
 Here is how much of TeX's memory you used:
- 15283 strings out of 495061
- 284780 string characters out of 1182622
- 351822 words of memory out of 3000000
- 18014 multiletter control sequences out of 15000+50000
- 15926 words of font info for 31 fonts, out of 3000000 for 9000
+ 15247 strings out of 495061
+ 284093 string characters out of 1182622
+ 349810 words of memory out of 3000000
+ 17978 multiletter control sequences out of 15000+50000
+ 15411 words of font info for 29 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  49i,19n,67p,398b,644s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/
-share/texmf-texlive/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-texliv
-e/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on GameBlade.pdf (14 pages, 124039 bytes).
+pdfTeX warning (dest): name{Outline0.1.2.12} has been refer
+enced but does not exist, replaced by a fixed one
+
+{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive
+/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on GameBlade.pdf (16 pages, 123923 bytes).
 PDF statistics:
- 496 PDF objects out of 1000 (max. 8388607)
- 33 named destinations out of 1000 (max. 500000)
- 129 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 552 PDF objects out of 1000 (max. 8388607)
+ 38 named destinations out of 1000 (max. 500000)
+ 117 words of extra memory for PDF output out of 10000 (max. 10000000)
 
