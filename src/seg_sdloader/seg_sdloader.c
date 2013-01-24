@@ -26,7 +26,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 #include "fatread.h"
 #include "sdio.h"
 #include "pex.h"
-#include "sd_loader.h"
+#include "seg_sdloader.h"
 #include "cacheops.h"
 #include "debug.h"
 
@@ -58,6 +58,8 @@ static int ReadSector(char *tag, FileInfo *finfo, uint8_t *buf);
 static void write_ram_long(uint32_t addr, uint32_t val);
 static uint32_t erase_flash_block(uint32_t addr);
 static uint32_t write_flash_page(uint32_t addr, uint8_t *buffer, uint32_t count);
+
+uint8_t PAD_ONE;
 
 int main(void)
 {

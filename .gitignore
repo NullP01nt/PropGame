@@ -25,3 +25,6 @@
 # LibreOffice files
 *.ods#
 *.odt#
+
+# VIM files
+.*.swp

@@ -19,7 +19,6 @@ HDRS=\
 	 vm_start.h
 
 OBJS=\
-	 cache_interface_firmware.o\
 	 fatread.o\
 	 gamepad.o\
 	 pins.o\
