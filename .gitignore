@@ -21,3 +21,7 @@
 *.toc
 *.snm
 *.nav
+
+# LibreOffice files
+*.ods#
+*.odt#
