@@ -4,7 +4,7 @@
 
 NAME=rock_paper_scissors
 BOARD=GAMEBLADE
-MODEL=lmm
+MODEL=xmmc
 
 SPINDIR=./spin
 

@@ -3,11 +3,9 @@
 #include "menudraw.h"
 #include "vga_text.h"
 #include "pins.h"
-#include "debug.h"
 
 volatile cursor_info cInfo;
 char menuList[MAX_ENTRIES][MAX_ENTRY_LENGTH];
-extern uint8_t fileCount;
 
 void initCursor() {
 	cInfo.cursor_col = 0;
@@ -41,9 +39,10 @@ void drawList() {
 				txt_row = CSR_START_ROW;
 			}
 			vgaText_setXY(txt_col,txt_row);
-			for(j=0; j<8; j++) {
+			/*for(j=0; j<8; j++) {
 				vgaText_putchar(menuList[i][j]);
-			}
+			}*/
+			vgaText_print(menuList[i]);
 			txt_row++;
 		}
 	}

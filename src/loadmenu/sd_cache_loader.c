@@ -152,7 +152,8 @@ int main(void)
 		waitcnt(CLKFREQ/6+CNT);	
 	}
     	
-    // open the .pex file
+    
+	// open the .pex file
     DPRINTF("Opening %s\n",filename);
     if (FindFile(buffer, &vinfo, filename, &finfo) != 0) {
         DPRINTF("FindFile '%s' failed\n", filename);
