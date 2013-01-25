@@ -1,0 +1,33 @@
+######################
+# segloader Makefile #
+######################
+
+NAME=loadmenu
+BOARD=GAMEBLADE
+MODEL=lmm
+
+HDRS=\
+	 cacheops.h\
+	 debug.h\
+	 fatread.h\
+	 gamepad.h\
+	 menudraw.h\
+	 pins.h\
+	 sdio.h\
+	 vga_text.h\
+	 vm_start.h
+
+OBJS=\
+	 fatread.o\
+	 gamepad.o\
+	 menudraw.o\
+	 pins.o\
+	 sd_cache_loader.o\
+	 sdio.o\
+	 VGA_firmware.o\
+	 vga_text.o\
+	 vm_start.o
+
+CFLAGS = -Os -DPROPELLER_GCC -mfcache -m32bit-doubles
+
+include ../common/common.mk
