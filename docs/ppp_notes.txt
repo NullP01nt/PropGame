@@ -1,0 +1,34 @@
+Titel
+Ouline
+About us
+Goal
+  Een gameconsole te maken met uitbreidingsmogelijkheden voor verdere devellopment
+  Een project die meerdere hobbies met elkaar verbind
+  Betere inzicht te krijgen in retro gameconsoles
+    Nu een nieuwe twist aan te geven
+  Een "goedkope" gameconsole te ontwikkelen voor mede devellepers
+  Kijken hoeveel we gedaan krijgen in deze tijd
+Uiteindelijk geworden
+  foto's/demo
+  kort uitleg wat er precies gebeurt is
+  C/spin
+Ideeen voor hierna
+  geluid!
+    Dit hadden we compleet over het hoofd gezien
+    Zelf chiptunes maken
+  Dev board verkleinen (oorspronkelijk idee)
+  extra EEPROM
+Alles behaald?
+  Verkleinen tot op 1 board hadden we graag willen doen
+  Leukere games voor gemaakt (dit was echter niet het doel van dit project)
+Geleerd
+  Samenwerken
+  Plannen
+  werken met de propeller
+Conslusie
+  Leuk platform
+    min:
+      spin
+    plus:
+      Je kan er veel mee als je bereid bent je er even in te verdiepen
+Vragen?
