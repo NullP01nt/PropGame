@@ -4,6 +4,8 @@
 #include "sdio.h"
 #include "debug.h"
 
+#include "menudraw.h"
+
 //#define FSDEBUG
 
 #define MBR_PARTITIONS              0x1be
@@ -57,6 +59,11 @@
 #define ATTR_LONG_NAME_MASK         0x3f
 
 #define NAME_SIZE                   11
+
+#define EXTENSION					"PEX"
+
+extern char menuList[MAX_ENTRIES][MAX_ENTRY_LENGTH];
+uint8_t fileCount;
 
 static uint16_t GetU16(uint8_t *buffer, int offset);
 static uint32_t GetU32(uint8_t *buffer, int offset);
@@ -195,6 +202,74 @@ int MountFS(uint8_t *buffer, VolumeInfo *vinfo)
 #endif
     
     return 0;
+}
+
+int ListExecutables(uint8_t *buffer, VolumeInfo *vinfo) {
+	uint32_t cluster, sector, count;
+	char ext[3];
+	fileCount=0;
+	int i, j;
+	cluster = vinfo->rootDirectoryCluster;
+	sector = vinfo->firstRootDirectorySector;
+	count = vinfo->rootDirectorySectorCount;
+
+	for (;;) {
+
+		for (j = 0; j < count; ++j) {
+			if(SD_ReadSector(sector + j, buffer) != 0) {
+				DPRINTF("SD_ReadSector %d failed\n", sector + j);
+				return -1;
+			}
+
+			for (i = 0; i < SECTOR_SIZE; i += ENTRY_SIZE) {
+				uint8_t flag = buffer[i + ENTRY_NAME];
+				uint8_t attr;
+				switch(flag) {
+					case 0xe5:
+					case 0x00:
+						break;
+					default:
+						attr = buffer[i + ENTRY_ATTRIBUTES];
+						if ((attr & ATTR_LONG_NAME_MASK) != ATTR_LONG_NAME
+						&& !(attr & ATTR_HIDDEN)
+						&& !(attr & ATTR_VOLUME_ID)) {
+							if (fileCount >= MAX_ENTRIES) return 0;
+							
+							strncpy(ext, (char *)&buffer[i+ENTRY_NAME+8],3);
+							DPRINTF("%s\n",ext);
+							
+							if(strcmp(ext,EXTENSION)!=0)
+								continue;
+							strncpy(menuList[fileCount], (char *)&buffer[i+ENTRY_NAME], NAME_SIZE);
+							menuList[fileCount][11] = 0;
+							fileCount++;		
+						}
+						break;
+				}
+				if(flag == 0x00) {
+					if(fileCount>0) {
+						return 0;
+					} else {
+						return -1;
+					}
+				}
+			}
+		}
+
+		if (!cluster)
+			break;
+
+		if (GetFATEntry(vinfo, buffer, cluster, &cluster) !=0)
+			return -1;
+
+		if (cluster < 2)
+			break;
+
+		sector = vinfo->firstDataSector + (cluster -2) * vinfo->sectorsPerCluster;
+		count = vinfo->sectorsPerCluster;
+	}
+
+	return -1;
 }
 
 int FindFile(uint8_t *buffer, VolumeInfo *vinfo, const char *name, FileInfo *finfo)

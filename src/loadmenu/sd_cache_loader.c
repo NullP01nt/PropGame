@@ -36,8 +36,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 #include "menudraw.h"
 
 extern uint8_t PAD_ONE;
-
-#define FILENAME    	"AUTORUN PEX"
+extern char menuList[MAX_ENTRIES][MAX_ENTRY_LENGTH];
+char* filename;
 
 #define HUB_SIZE    	(32 * 1024)
 
@@ -71,7 +71,7 @@ int main(void)
 	initGPadIO();
 	initScreen();
     uint8_t *buffer = (uint8_t *)_load_start_coguser1;
-    //SdLoaderInfo *info = (SdLoaderInfo *)_load_start_coguser0;
+    SdLoaderInfo *info = (SdLoaderInfo *)_load_start_coguser0;
     uint32_t cache_addr, vm_params[5], cluster_count, cluster, tmp;
     uint32_t load_address, *cluster_map;
     CacheParams cache_params;
@@ -86,23 +86,30 @@ int main(void)
     vm_mbox = xmm_mbox - 1;
     
     // load the cache driver
+	setStatusbar("Loading cache driver");
     DPRINTF("Loading cache driver\n");
     xmm_mbox[0] = 0xffffffff;
     cognew(_load_start_coguser1, xmm_mbox);
     while (xmm_mbox[0])
         ;
-        
+    
+	setStatusbar("Initializing SD Card");
     DPRINTF("Initializing SD card\n");
     if (SD_Init(xmm_mbox, 5) != 0) {
+		setStatusbar("SD Card init failed");
         DPRINTF("SD card initialization failed\n");
         return -1;
     }
         
+	setStatusbar("Mounting filesystem");
     DPRINTF("Mounting SD filesystem\n");
     if (MountFS(buffer, &vinfo) != 0) {
+		setStatusbar("MountFS failed");
         DPRINTF("MountFS failed\n");
         return 1;
     }
+
+	setStatusbar("MountFS succesful");
     
     // compute the cluster width
     cache_params.cluster_width = 0;
@@ -110,6 +117,15 @@ int main(void)
     	for (; (tmp & 1) == 0; tmp >>= 1)
     		++cache_params.cluster_width;
     }
+
+	setStatusbar("Loading filelist");
+	DPRINTF("Looking for PEX files\n");
+	if(ListExecutables(buffer, &vinfo)!=0) {
+		setStatusbar("Listing failed");
+		return 1;
+	}
+
+	drawList();
 
 	while(1) {
 		readPads();
@@ -119,18 +135,27 @@ int main(void)
 			CLR_ROW(STS_BAR_ROW);	
 		} else if (PAD_ONE & BUTTON_UP) {
 			setStatusbar("UU");
+			cursor_up();
 		} else if (PAD_ONE & BUTTON_DOWN) {
 			setStatusbar("DD");
+			cursor_down();
 		} else if (PAD_ONE & BUTTON_SELECT) {
 			setStatusbar("SE");
+			cursor_switch_col();
+		} else if (PAD_ONE & BUTTON_B) {
+			setStatusbar(menuList[getCursorIndex()]);
+		} else if (PAD_ONE & BUTTON_A) {
+			setStatusbar("Loading file");
+			strcpy(filename, menuList[getCursorIndex()]);
+			break;
 		}
 		waitcnt(CLKFREQ/6+CNT);	
 	}
     	
     // open the .pex file
-    DPRINTF("Opening AUTORUN.PEX\n");
-    if (FindFile(buffer, &vinfo, FILENAME, &finfo) != 0) {
-        DPRINTF("FindFile '%s' failed\n", FILENAME);
+    DPRINTF("Opening %s\n",filename);
+    if (FindFile(buffer, &vinfo, filename, &finfo) != 0) {
+        DPRINTF("FindFile '%s' failed\n", filename);
         return 1;
     }
     

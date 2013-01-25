@@ -4,7 +4,7 @@
 #include "vga_text.h"
 
 #define MAX_ENTRIES			22
-#define	MAX_ENTRY_LENGTH	13
+#define	MAX_ENTRY_LENGTH	12
 #define COL_WIDTH			30
 #define ROW_HEIGHT			14
 #define BLANK_CHAR			0x20
@@ -40,5 +40,5 @@ void cursor_down(void);
 void cursor_switch_col(void);
 
 void setStatusbar(char*);
-
+int getCursorIndex(void);
 #endif
