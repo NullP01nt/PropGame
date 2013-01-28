@@ -2,10 +2,10 @@
 #define __GBL_PINS_H
 
 // Define GamePad pins
-#define GP_CLK			8
-#define GP_LATCH		9
-#define GP_D1			10
-#define GP_D2			11
+#define GP_CLK			11
+#define GP_LATCH		10
+#define GP_D1			9
+#define GP_D2			8
 
 // Define SPI pins
 #define SPI_SCK			0
