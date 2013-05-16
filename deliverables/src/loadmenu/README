@@ -1,0 +1,8 @@
+manually patch in cache driver
++) propeller-elf-readelf -S <elf-file>
++) look for the .coguser1 offset
++) Open <elf-file> with hexer, go to the offset
++) remove the number of bytes equal to the driver length
++) hexer command :r ../drivers/<driver-file>
+
+

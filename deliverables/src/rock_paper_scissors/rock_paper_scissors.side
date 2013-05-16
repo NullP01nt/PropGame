@@ -1,0 +1,13 @@
+rock_paper_scissors.c
+VGA.spin
+vga_text.c
+vga_text.h
+gamepad.c
+gamepad.h
+pins.c
+pins.h
+>compiler=C
+>memtype=lmm
+>optimize=-Os
+>-fno-exceptions
+>BOARD::PROTOBOARD
